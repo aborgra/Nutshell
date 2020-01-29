@@ -44,7 +44,7 @@ export const TasksProvider = props => {
   }, []);
 
   useEffect(() => {
-    console.log("****  LOCATION APPLICATION STATE CHANGED  ****");
+    console.log("****  TASKS APPLICATION STATE CHANGED  ****");
   }, [tasks]);
 
   return (
@@ -52,8 +52,8 @@ export const TasksProvider = props => {
       value={{
         tasks,
         addTasks,
-        deleteTasks,
-        updateTasks
+        updateTasks,
+        deleteTasks
       }}>
       {props.children}
     </TasksContext.Provider>
