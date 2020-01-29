@@ -17,17 +17,6 @@ export const FriendProvider = (props) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(Friend)
-    })
-      .then(getFriends)
-  }
-
-  const editFriend = friend => {
-    return fetch(`http://localhost:3000/friends/${friend.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify(friend)
     })
       .then(getFriends)
@@ -49,11 +38,11 @@ export const FriendProvider = (props) => {
 
   useEffect(() => {
     console.log("***Friends APP STATE CHANGED")
-  }, [Friends])
+  }, [friends])
 
   return (
     <FriendContext.Provider value = {{
-      friends, addFriends, deleteFriend, editFriend
+      friends, addFriends, deleteFriend
     }}>
         {props.children}
     </FriendContext.Provider>
