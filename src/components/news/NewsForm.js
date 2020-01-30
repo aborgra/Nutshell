@@ -37,19 +37,11 @@ export default props => {
 
   const constructNewNews = () => {
     if (editMode) {
-      console.log(
-        {
-          id: singleNews.id,
-          title: singleNews.title,
-          synopsis: singleNews.synopsis,
-          date: singleNews.date,
-          userId: parseInt(localStorage.getItem("nutshell_user"))
-      }
-      )
         editNews({
             id: singleNews.id,
             title: singleNews.title,
             synopsis: singleNews.synopsis,
+            url: newsUrl.current.value,
             date: singleNews.date,
             userId: parseInt(localStorage.getItem("nutshell_user"))
         })
