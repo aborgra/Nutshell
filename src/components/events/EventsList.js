@@ -1,15 +1,15 @@
 import React, { useContext } from "react"
-import { EventContext } from "./EventContext"
+import { EventContext } from "./EventsProvider"
 import { FriendContext } from "../friends/FriendProvider"
-// import Event from "./Event"
+import Event from "./Event"
 // import "./Events.css"
 
 export default (props) => {
     const { events } = useContext(EventContext)
     const { friends } = useContext(FriendContext)
-    const userId = parseInt(localStorage.getItem("nutshell_user"), 10)
+    const activeUserId = parseInt(localStorage.getItem("nutshell_user"), 10)
 
-    const filteredFriends = friends.filter(friend => friend.friendInitiateId === userId)
+    const filteredFriends = friends.filter(friend => friend.friendInitiateId === activeUserId)
 
     let friendsIdsArray = []
 
@@ -17,7 +17,10 @@ export default (props) => {
         friendsIdsArray.push(friend.userId)
     });
 
+
     const sortedEvents = events.sort((a,b) => b.date = a.date)
+
+    const filteredSortedEvents = sortedEvents.filter(event => event.userId x)
 
     return (
         <div className="events">

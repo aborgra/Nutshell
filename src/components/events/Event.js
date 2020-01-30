@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import { EventContext } from "./EventsProvider"
-import "./Events.css"
+// import "./Events.css"
 
 
 export default ({event, props, friend, next}) => {
@@ -40,9 +40,9 @@ export default ({event, props, friend, next}) => {
 
     return (
         <section className={eventSectionClass}>
-            <div className="eventCardInfo">Name: ${event.name}</div>
-            <div className="eventCardInfo">Date: ${event.date}</div>
-            <div className="eventCardInfo">Location: ${event.location}</div>
+            <div className="eventCardInfo">Name: {event.name}</div>
+            <div className="eventCardInfo">Date: {event.date}</div>
+            <div className="eventCardInfo">Location: {event.location}</div>
             {eventEditButton}
             {eventDeleteButton}
         </section>
