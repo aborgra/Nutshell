@@ -6,6 +6,7 @@ import FriendsList from "./friends/FriendsList"
 import EventsList from "./events/EventsList"
 import EventForm from "./events/EventForm"
 import NewsList from "./news/NewsList"
+import MessagesList from "./messages/MessagesList"
 
 
 export default (props) => {
@@ -13,33 +14,30 @@ export default (props) => {
     <>
     
     <ProviderProvider>
-      <Route exact path="/" render={
-        props => {
-          return (
-            <>
-            {/* // <MessageList {...props} /> */}
-            <FriendsList {...props} />
-            <EventsList {...props} />
-            // <NewsList {...props} />
-            {/* // <TaskList {...props} /> */}
-            </>
-          )}
-        }/>
-      <Route exact path="/editEvent/:eventId(\d+)" render={
-        props => <EventForm {...props} />
-      } />
-      <Route exact path="/createEvent" render={
-        props => <EventForm {...props} />
-      } />
-      <Route exact path="/createNews" render={
-        props => <NewsForm {...props} />
-      } />
-      <Route  exact path="/editNews/:newsId(\d+)" render={
-        props => <NewsForm {...props} />
-      } />
+        <Route exact path="/" render={
+          props => {
+            return(
+              <>
+              <FriendsList {...props} />
+              <NewsList {...props} />
+              <MessagesList {...props} />
+              <EventsList {... props} />
+              </>
+            )}} />
+            <Route exact path="/editEvent/:eventId(\d+)" render={
+              props => <EventForm {...props} />
+            } />
+            <Route exact path="/createEvent" render={
+              props => <EventForm {...props} />
+            } />
+             <Route exact path="/createNews" render={
+              props => <NewsForm {...props} />}
+            />
+             <Route  exact path="/editNews/:newsId(\d+)" render={
+              props => <NewsForm {...props} />}
+            />
     </ProviderProvider>
    
     </>
-    
-  )
-}
+  );
+};
