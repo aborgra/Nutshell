@@ -7,6 +7,8 @@ export default (props) => {
   const { news } = useContext(NewsContext)
   const { friends} = useContext(FriendContext)
   
+  let isFriend = false;
+
   const usersNews = news.filter(
     article =>
         article.userId === parseInt(localStorage.getItem("nutshell_user"))
@@ -36,9 +38,14 @@ export default (props) => {
             }}>Add News</button>
       {
         combinedArray.map(singleNews => {
+          if (singleNews.userId != parseInt(localStorage.getItem("nutshell_user"))) {
+            isFriend = true;
+
+          }
             return (
                 <News props={props} key={singleNews.id}
-                      news={singleNews} />
+                      news={singleNews}
+                      friendStatus={isFriend} />
             )
         })
       }
