@@ -8,9 +8,9 @@ export const TasksProvider = props => {
   const getTasks = () => {
     return fetch("http://localhost:8088/tasks?_expand=user")
       .then(res => res.json())
-      .then(setTasks)
-      .slice()
-      .sort((currentTask, nextTask) => Date.parse(currentTask.completionDate) - Date.parse(nextTask.completionDate));
+      .then(setTasks);
+    // .slice()
+    // .sort((currentTask, nextTask) => Date.parse(currentTask.completionDate) - Date.parse(nextTask.completionDate));
   };
 
   const addTasks = task => {
