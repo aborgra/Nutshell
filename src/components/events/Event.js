@@ -14,20 +14,24 @@ export default ({event, props, friend, next}) => {
     if (friend === true) {
         eventSectionClass = "friendEvent"
     } else {
-        eventDeleteButton = <button
-                                onClick={() => {
-                                    deleteEvent(event.id)
-                                    .then(() => {
-                                        props.history.push("/")
-                                    })
+        eventDeleteButton = <>
+                                <button
+                                    onClick={() => {
+                                        deleteEvent(event.id)
+                                        .then(() => {
+                                            props.history.push("/")
+                                        })
+                                    }}
+                                    >Delete event
+                                </button>
+                            </>
+        eventEditButton = <>
+                            <button onClick={() => {
+                                props.history.push(`/editEvent/${event.id}`)
                                 }}
-                                >Delete event
+                                >Edit event
                             </button>
-        eventEditButton = <button onClick={() => {
-                            props.history.push("/editEvent/:eventId(\d+)")
-                            }}
-                            >Edit event
-                          </button>
+                        </>
     }
 
     if (next === true) {
