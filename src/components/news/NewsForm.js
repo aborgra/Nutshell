@@ -4,13 +4,14 @@ import { UserContext } from "../users/UserProvider"
 
 
 export default props => {
-  const { users } = useContext(UserContext)
   const { addNews, news, editNews } = useContext(NewsContext)
-  const [singleNews, setSingleNews] = useState("")
+  const [singleNews, setSingleNews] = useState({})
   const newsTitle = useRef("")
   const newsUrl = useRef("")
   const newsSynopsis = useRef("")
+
   const editMode = props.match.params.hasOwnProperty("newsId")
+  
 
   const handleControlledInputChange = (event) => {
     /*
@@ -36,11 +37,20 @@ export default props => {
 
   const constructNewNews = () => {
     if (editMode) {
+      console.log(
+        {
+          id: singleNews.id,
+          title: singleNews.title,
+          synopsis: singleNews.synopsis,
+          date: singleNews.date,
+          userId: parseInt(localStorage.getItem("nutshell_user"))
+      }
+      )
         editNews({
-            id: news.id,
-            title: newsTitle.current.value,
-            synopsis: newsSynopsis.current.value,
-            date: news.date,
+            id: singleNews.id,
+            title: singleNews.title,
+            synopsis: singleNews.synopsis,
+            date: singleNews.date,
             userId: parseInt(localStorage.getItem("nutshell_user"))
         })
             .then(() => props.history.push("/"))
@@ -69,8 +79,8 @@ export default props => {
           <input type="text" name="title" required autoFocus className="form-control"
             ref= {newsTitle}
             proptype="varchar"
-            placeholder="title"
-            defaultValue={news.title}
+            placeholder="News Title"
+            defaultValue={singleNews.title}
             onChange={handleControlledInputChange}
           />
         </div>
@@ -82,7 +92,7 @@ export default props => {
             ref= {newsUrl}
             proptype="varchar"
             placeholder="url"
-            defaultValue={news.url}
+            defaultValue={singleNews.url}
             onChange={handleControlledInputChange}
           />
         </div>
@@ -94,7 +104,7 @@ export default props => {
             ref= {newsSynopsis}
             proptype="varchar"
             placeholder="What's slothing?"
-            value={news.synopsis}
+            value={singleNews.synopsis}
             onChange={handleControlledInputChange}>
           </textarea>
         </div>

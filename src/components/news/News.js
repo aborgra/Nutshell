@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NewsContext } from "./NewsProvider";
 
 
-export default ({news}) => {
+export default ({news, props}) => {
   const { deleteNews } = useContext(NewsContext);
   return (
     <section className="newsCard">
