@@ -8,7 +8,6 @@ export default (props) => {
     const { events } = useContext(EventContext)
     const { friends } = useContext(FriendContext)
     const userId = parseInt(localStorage.getItem("nutshell_user"), 10)
-    let friendEvent = false
 
     const filteredFriends = friends.filter(friend => friend.friendInitiateId === userId)
 
@@ -27,6 +26,13 @@ export default (props) => {
             <article className="eventsList">
                 {
                     events.map(event => {
+
+                        let friendEvent = false
+
+                        if (friendsIdsArray.includes(event.userId)) {
+                            friendEvent = true
+                        }
+
                         return <Event key={event.id} 
                                 event={event} 
                                 props={props}
