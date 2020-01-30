@@ -4,6 +4,7 @@ import NewsForm from "./news/NewsForm"
 import ProviderProvider from "./providers/ProviderProvider"
 import FriendsList from "./friends/FriendsList"
 import NewsList from "./news/NewsList"
+import MessagesList from "./messages/MessagesList"
 
 
 export default (props) => {
@@ -15,8 +16,9 @@ export default (props) => {
           props => {
             return(
               <>
-              <NewsList {...props} />
               <FriendsList {...props} />
+              <NewsList {...props} />
+              <MessagesList {...props} />
               </>
             )}} />
              <Route exact path="/createNews" render={
