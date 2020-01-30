@@ -6,11 +6,11 @@ export const TasksProvider = props => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = () => {
-    return fetch("http://localhost:8088/tasks")
+    return fetch("http://localhost:8088/tasks?_expand=user")
       .then(res => res.json())
       .then(setTasks)
-      .slice()
-      .sort((currentTask, nextTask) => Date.parse(currentTask.completionDate) - Date.parse(nextTask.completionDate));
+      // .slice()
+      // .sort((currentTask, nextTask) => Date.parse(currentTask.completionDate) - Date.parse(nextTask.completionDate));
   };
 
   const addTasks = task => {
