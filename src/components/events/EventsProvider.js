@@ -1,15 +1,20 @@
-import React, {useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
-export const EventContext = React.createContext()
+export const EventContext = React.createContext();
 
-export const EventProvider = (props) => {
-  const [events, setEvents] = useState([])
+export const EventProvider = props => {
+  const [events, setEvents] = useState([]);
 
   const getEvents = () => {
     return fetch("http://localhost:3000/events")
-          .then(res => res.json())
-          .then(setEvents)
-  }
+      .then(res => res.json())
+      .then(setEvents)
+      .slice()
+      .sort(
+        (currentEvent, nextEvent) =>
+          Date.parse(currentEvent.date) - Date.parse(nextEvent.date)
+      );
+  };
 
   const addEvent = event => {
     return fetch("http://localhost:3000/events", {
@@ -18,9 +23,8 @@ export const EventProvider = (props) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(event)
-    })
-      .then(getEvents)
-  }
+    }).then(getEvents);
+  };
 
   const editEvent = event => {
     return fetch(`http://localhost:3000/events/${event.id}`, {
@@ -29,33 +33,33 @@ export const EventProvider = (props) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(event)
-    })
-      .then(getEvents)
-  }
+    }).then(getEvents);
+  };
 
   const deleteEvent = event => {
     return fetch(`http://localhost:3000/events/${event.id}`, {
-      method: "DELETE",
-    })
-      .then(getEvents)
-  }
-
-  
-
+      method: "DELETE"
+    }).then(getEvents);
+  };
 
   useEffect(() => {
-    getEvents()
-  }, [])
+    getEvents();
+  }, []);
 
   useEffect(() => {
-    console.log("***Events APP STATE CHANGED")
-  }, [events])
+    console.log("***Events APP STATE CHANGED");
+  }, [events]);
 
   return (
-    <EventContext.Provider value = {{
-      events, addEvent, deleteEvent, editEvent
-    }}>
-        {props.children}
+    <EventContext.Provider
+      value={{
+        events,
+        addEvent,
+        deleteEvent,
+        editEvent
+      }}
+    >
+      {props.children}
     </EventContext.Provider>
-  )
-}
+  );
+};
