@@ -31,21 +31,21 @@ export default (props) => {
                     sortedEvents.map(event => {
 
                         let friendEvent = false
-                        let latestEvent = false
+                        let nextEvent = false
 
                         if (friendsIdsArray.includes(event.userId)) {
                             friendEvent = true
                         }
 
                         if (sortedEvents[0] === event) {
-                            latestEvent = true
+                            nextEvent = true
                         }
 
                         return <Event key={event.id} 
                                 event={event} 
                                 props={props}
                                 friend={friendEvent}
-                                latest={latestEvent} />
+                                next={nextEvent} />
                     })
                 } 
             </article>
