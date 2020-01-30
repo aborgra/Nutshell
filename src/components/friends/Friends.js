@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom"
 import { FriendContext } from "../friends/FriendProvider"
+import slothPic from "../pics/slothPic.jpg"
 
-export default ({ Friend }) => {
-
+export default ({ friend }) => {
   const { deleteFriend } = useContext(FriendContext)
-
   return (
     <section className="friend">
-    <img class="friend__img card-img-top" src="./pics/sloth.jpg"/>
-      <h3 className="friend__name">{Friend.name}</h3>
+    <img className="friend__img card-img-top" src={slothPic}/>
+      <h3 className="friend__name">{friend.user.userName}</h3>
       <button
         onClick={() => {
-          deleteFriend(Friend)
+          deleteFriend(friend)
           // .then(() => {props.history.push("/")});
         }}
       >

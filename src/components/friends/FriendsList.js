@@ -1,8 +1,9 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FriendContext } from "./FriendProvider";
 import { UserContext } from "../users/UserProvider";
-import Friend from "./Friend";
-import "./Friend.css";
+import Friend from "./Friends";
+import "./Friends.css";
+
 
 export default () => {
   const { friends, addFriend } = useContext(FriendContext);
@@ -17,7 +18,8 @@ export default () => {
   };
 
   const constructNewFriend = () => {
-    const friendUserName = { friendName };
+    const friendUserName = friendName.current.value 
+    const friendInitiateId = parseInt(localStorage.getItem("nutshell_user"))
     const foundUser = users.find(user => user.userName === friendUserName);
     if (foundUser === undefined) {
       alert("User not found");
@@ -43,11 +45,17 @@ export default () => {
     }
   };
 
+  const foundFriendsArray = friends.filter(
+    friendRel => friendRel.friendInitiateId === parseInt(localStorage.getItem("nutshell_user"))
+  );
+
+
   return (
     <div className="friends">
       <input
         type="text"
         name="name"
+        id="friendName"
         ref={friendName}
         required
         className="form-control"
@@ -63,10 +71,11 @@ export default () => {
           constructNewFriend();
         }}
         className="btn btn-primary"
-      ></button>
+      >Add Friend</button>
 
-      {friends.map(friend => (
-        <Friend key={friend.id} Friend={friend} />
+      {foundFriendsArray.map(f => (
+        
+        <Friend key={f.id} friend={f} />
       ))}
     </div>
   );

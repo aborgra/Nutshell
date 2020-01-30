@@ -1,5 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import ProviderProvider from "./providers/ProviderProvider"
+import FriendsList from "./friends/FriendsList"
+
 
 export default () => {
   return (
