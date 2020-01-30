@@ -6,22 +6,10 @@ export const EventProvider = props => {
   const [events, setEvents] = useState([]);
 
   const getEvents = () => {
-<<<<<<< HEAD
-    return fetch("http://localhost:3000/events")
-      .then(res => res.json())
-      .then(setEvents)
-      .slice()
-      .sort(
-        (currentEvent, nextEvent) =>
-          Date.parse(currentEvent.date) - Date.parse(nextEvent.date)
-      );
-  };
-=======
     return fetch("http://localhost:8088/events")
           .then(res => res.json())
           .then(setEvents)
   }
->>>>>>> master
 
   const addEvent = event => {
     return fetch("http://localhost:8088/events", {
