@@ -1,12 +1,14 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import NewsForm from "./news/NewsForm"
 import ProviderProvider from "./providers/ProviderProvider"
 import FriendsList from "./friends/FriendsList"
 import EventsList from "./events/EventsList"
 import EventForm from "./events/EventForm"
+import NewsList from "./news/NewsList"
 
 
-export default () => {
+export default (props) => {
   return (
     <>
     
@@ -18,7 +20,7 @@ export default () => {
             {/* // <MessageList {...props} /> */}
             <FriendsList {...props} />
             <EventsList {...props} />
-            {/* // <NewsList {...props} /> */}
+            // <NewsList {...props} />
             {/* // <TaskList {...props} /> */}
             </>
           )}
@@ -28,6 +30,12 @@ export default () => {
       } />
       <Route exact path="/createEvent" render={
         props => <EventForm {...props} />
+      } />
+      <Route exact path="/createNews" render={
+        props => <NewsForm {...props} />
+      } />
+      <Route  exact path="/editNews/:newsId(\d+)" render={
+        props => <NewsForm {...props} />
       } />
     </ProviderProvider>
    
