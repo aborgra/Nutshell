@@ -14,13 +14,13 @@ export const NewsProvider = (props) => {
     const [news, setNews] = useState([])
 
     const getNews = () => {
-        return fetch("http://localhost:3000/news")
+        return fetch("http://localhost:8088/news")
             .then(res => res.json())
             .then(setNews)
     }
 
     const addNews = article => {
-        return fetch("http://localhost:3000/news", {
+        return fetch("http://localhost:8088/news", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -31,14 +31,14 @@ export const NewsProvider = (props) => {
     }
 
     const deleteNews = article => {
-        return fetch(`http://localhost:3000/news/${article.id}`, {
+        return fetch(`http://localhost:8088/news/${article.id}`, {
             method: "DELETE"
         })
             .then(getNews)
     }
 
     const editNews = article => {
-        return fetch(`http://localhost:3000/news/${article.id}`, {
+        return fetch(`http://localhost:8088/news/${article.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
