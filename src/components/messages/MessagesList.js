@@ -5,18 +5,18 @@ import Message from "./Message";
 import "./Messages.css";
 
 export default () => {
-  const { messages, addMessages, deleteMessage, editMessage } = useContext(
+  const { messages, addMessages, editMessage } = useContext(
     MessageContext
   );
   const { users } = useContext(UserContext);
-  const [message, setMessage] = useState({});
+  // const [message, setMessage] = useState({});
   const messageText = useRef("");
 
-  const handleControlledInputChange = event => {
-    const newMessage = Object.assign({}, message);
-    newMessage[event.target.name] = event.target.value;
-    setMessage(newMessage);
-  };
+  // const handleControlledInputChange = event => {
+  //   const newMessage = Object.assign({}, message);
+  //   newMessage[event.target.name] = event.target.value;
+  //   setMessage(newMessage);
+  // };
 
   const constructNewMessage = () => {
     const userId = parseInt(localStorage.getItem("nutshell_user"));
@@ -24,8 +24,8 @@ export default () => {
     addMessages({
       userId: userId,
       message: messageContent
-    });
-    // .then(() => props.history.push("/"));
+    })
+    .then(() => {messageText.current.value = ""})
   };
 
   
@@ -47,7 +47,7 @@ export default () => {
         proptype="varchar"
         placeholder="message text"
         defaultValue={""}
-        onChange={handleControlledInputChange}
+        // onChange={handleControlledInputChange}
       />
       <button
         type="submit"
