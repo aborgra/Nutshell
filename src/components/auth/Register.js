@@ -32,7 +32,7 @@ const Register = props => {
                         body: JSON.stringify({
                             email: email.current.value,
                             password: password.current.value,
-                            name: userName.current.value
+                            userName: userName.current.value
                         })
                     })
                         .then(_ => _.json())
