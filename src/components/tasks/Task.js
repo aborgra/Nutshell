@@ -17,11 +17,9 @@ export default ({ tasks }) => {
         </ul>
       </div>
       <div>
-        Task Completed: <input id="hideTask--${tasks.id}" class="hideTask" type="checkbox" />
+        Task Completed: <input type="checkbox" />
       </div>
-      <button id="editTask--${tasks.id}" class="editTask btn btn-secondary">
-        Edit Task
-      </button>
+      <button className="editTask btn btn-secondary">Edit Task</button>
     </section>
   );
 };

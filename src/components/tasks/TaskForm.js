@@ -16,7 +16,7 @@ export default props => {
         name: tasksValue,
         completionDate: tasksDate,
         isCompleted: false
-      }).then(() => props.history.push("/tasks"));
+      }).then(() => props.history.push("/"));
     }
   };
 
@@ -49,7 +49,7 @@ export default props => {
       <button
         onClick={clickEvent => {
           clickEvent.preventDefault();
-          props.history.push("/tasks");
+          props.history.push("/");
         }}>
         Close
       </button>
