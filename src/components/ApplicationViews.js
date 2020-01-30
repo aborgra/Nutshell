@@ -23,10 +23,10 @@ export default () => {
             </>
           )}
         }/>
-      <Route path="/editEvent/:eventId(\d+)" render={
+      <Route exact path="/editEvent/:eventId(\d+)" render={
         props => <EventForm {...props} />
       } />
-      <Route path="/createEvent/:eventId(\d+)" render={
+      <Route exact path="/createEvent" render={
         props => <EventForm {...props} />
       } />
     </ProviderProvider>

@@ -15,12 +15,11 @@ export default (props) => {
 
     filteredFriends.forEach(friend => {
         friendsIdsArray.push(friend.userId)
-    });
+    })
 
+    const filteredEvents = events.filter(event => event.userId === activeUserId || friendsIdsArray.includes(event.userId))
 
-    const sortedEvents = events.sort((a,b) => b.date = a.date)
-
-    const filteredSortedEvents = sortedEvents.filter(event => event.userId x)
+    const sortedEvents = filteredEvents.sort((a, b) => b.date = a.date)
 
     return (
         <div className="events">

@@ -17,7 +17,7 @@ export default ({event, props, friend, next}) => {
         eventDeleteButton = <>
                                 <button
                                     onClick={() => {
-                                        deleteEvent(event.id)
+                                        deleteEvent(event)
                                         .then(() => {
                                             props.history.push("/")
                                         })

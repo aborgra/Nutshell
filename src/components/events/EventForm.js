@@ -34,20 +34,52 @@ export default props => {
 
     const constructNewEvent = () => {
             if (editMode) {
+                let formattedDate = new Date(eventDate.current.value).toString()
+                formattedDate = formattedDate.split(" ")
+                formattedDate[0] += "."
+                formattedDate[1] += "."
+                let formattedTime = formattedDate[4].split(":")
+                let formattedHour = parseInt(formattedTime[0], 10)
+                if (formattedHour > 11) {
+                    formattedHour -= 12
+                    formattedTime[0] = formattedHour.toString()
+                    formattedDate[5] = "PM"
+                } else {
+                    formattedDate[5] = "AM"
+                }
+                formattedDate[4] = formattedTime.slice(0, 2).join(":")
+                formattedDate = formattedDate.slice(0, 6).join(" ")
+                console.log(formattedDate)
                 editEvent({
                     id: event.id,
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),
                     name: eventName.current.value,
-                    date: eventDate.current.value,
+                    date: formattedDate,
                     location: eventLocation.current.value
                 })
                     .then(() => props.history.push("/"))
             } else {
+                let formattedDate = new Date(eventDate.current.value).toString()
+                formattedDate = formattedDate.split(" ")
+                formattedDate[0] += "."
+                formattedDate[1] += "."
+                let formattedTime = formattedDate[4].split(":")
+                let formattedHour = parseInt(formattedTime[0], 10)
+                if (formattedHour > 11) {
+                    formattedHour -= 12
+                    formattedTime[0] = formattedHour.toString()
+                    formattedDate[5] = "PM"
+                } else {
+                    formattedDate[5] = "AM"
+                }
+                formattedDate[4] = formattedTime.slice(0, 2).join(":")
+                formattedDate = formattedDate.slice(0, 6).join(" ")
+                console.log(formattedDate)
                 addEvent({
                     id: event.id,
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),
                     name: eventName.current.value,
-                    date: eventDate.current.value,
+                    date: formattedDate,
                     location: eventLocation.current.value
                 })
                     .then(() => props.history.push("/"))
