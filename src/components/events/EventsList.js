@@ -17,6 +17,8 @@ export default (props) => {
         friendsIdsArray.push(friend.userId)
     });
 
+    const sortedEvents = events.sort((a,b) => b.date = a.date)
+
     return (
         <div className="events">
             <h1 className="events__header">Events</h1>
@@ -24,19 +26,26 @@ export default (props) => {
                 Add Event
             </button>
             <article className="eventsList">
+
                 {
-                    events.map(event => {
+                    sortedEvents.map(event => {
 
                         let friendEvent = false
+                        let latestEvent = false
 
                         if (friendsIdsArray.includes(event.userId)) {
                             friendEvent = true
                         }
 
+                        if (sortedEvents[0] === event) {
+                            latestEvent = true
+                        }
+
                         return <Event key={event.id} 
                                 event={event} 
                                 props={props}
-                                friend={friendEvent} />
+                                friend={friendEvent}
+                                latest={latestEvent} />
                     })
                 } 
             </article>
