@@ -6,6 +6,7 @@ export const EventProvider = props => {
   const [events, setEvents] = useState([]);
 
   const getEvents = () => {
+<<<<<<< HEAD
     return fetch("http://localhost:3000/events")
       .then(res => res.json())
       .then(setEvents)
@@ -15,9 +16,15 @@ export const EventProvider = props => {
           Date.parse(currentEvent.date) - Date.parse(nextEvent.date)
       );
   };
+=======
+    return fetch("http://localhost:8088/events")
+          .then(res => res.json())
+          .then(setEvents)
+  }
+>>>>>>> master
 
   const addEvent = event => {
-    return fetch("http://localhost:3000/events", {
+    return fetch("http://localhost:8088/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +34,7 @@ export const EventProvider = props => {
   };
 
   const editEvent = event => {
-    return fetch(`http://localhost:3000/events/${event.id}`, {
+    return fetch(`http://localhost:8088/events/${event.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -37,10 +44,14 @@ export const EventProvider = props => {
   };
 
   const deleteEvent = event => {
-    return fetch(`http://localhost:3000/events/${event.id}`, {
-      method: "DELETE"
-    }).then(getEvents);
-  };
+    return fetch(`http://localhost:8088/events/${event.id}`, {
+      method: "DELETE",
+    })
+      .then(getEvents)
+  }
+
+  
+
 
   useEffect(() => {
     getEvents();
