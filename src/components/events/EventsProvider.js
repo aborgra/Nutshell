@@ -1,40 +1,50 @@
-import React, {useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
-export const EventContext = React.createContext()
+export const EventContext = React.createContext();
 
-export const EventProvider = (props) => {
-  const [events, setEvents] = useState([])
+export const EventProvider = props => {
+  const [events, setEvents] = useState([]);
 
   const getEvents = () => {
+<<<<<<< HEAD
     return fetch("http://localhost:3000/events")
+      .then(res => res.json())
+      .then(setEvents)
+      .slice()
+      .sort(
+        (currentEvent, nextEvent) =>
+          Date.parse(currentEvent.date) - Date.parse(nextEvent.date)
+      );
+  };
+=======
+    return fetch("http://localhost:8088/events")
           .then(res => res.json())
           .then(setEvents)
   }
+>>>>>>> master
 
   const addEvent = event => {
-    return fetch("http://localhost:3000/events", {
+    return fetch("http://localhost:8088/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(event)
-    })
-      .then(getEvents)
-  }
+    }).then(getEvents);
+  };
 
   const editEvent = event => {
-    return fetch(`http://localhost:3000/events/${event.id}`, {
+    return fetch(`http://localhost:8088/events/${event.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(event)
-    })
-      .then(getEvents)
-  }
+    }).then(getEvents);
+  };
 
   const deleteEvent = event => {
-    return fetch(`http://localhost:3000/events/${event.id}`, {
+    return fetch(`http://localhost:8088/events/${event.id}`, {
       method: "DELETE",
     })
       .then(getEvents)
@@ -44,18 +54,23 @@ export const EventProvider = (props) => {
 
 
   useEffect(() => {
-    getEvents()
-  }, [])
+    getEvents();
+  }, []);
 
   useEffect(() => {
-    console.log("***Events APP STATE CHANGED")
-  }, [events])
+    console.log("***Events APP STATE CHANGED");
+  }, [events]);
 
   return (
-    <EventContext.Provider value = {{
-      events, addEvent, deleteEvent, editEvent
-    }}>
-        {props.children}
+    <EventContext.Provider
+      value={{
+        events,
+        addEvent,
+        deleteEvent,
+        editEvent
+      }}
+    >
+      {props.children}
     </EventContext.Provider>
-  )
-}
+  );
+};

@@ -6,7 +6,7 @@ export const TasksProvider = props => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = () => {
-    return fetch("http://localhost:3000/tasks")
+    return fetch("http://localhost:8088/tasks")
       .then(res => res.json())
       .then(setTasks)
       .slice()
@@ -14,7 +14,7 @@ export const TasksProvider = props => {
   };
 
   const addTasks = task => {
-    return fetch("http://localhost:3000/tasks", {
+    return fetch("http://localhost:8088/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -24,7 +24,7 @@ export const TasksProvider = props => {
   };
 
   const updateTasks = taskObject => {
-    return fetch(`http://localhost:3000/tasks/${taskObject.id}`, {
+    return fetch(`http://localhost:8088/tasks/${taskObject.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -34,7 +34,7 @@ export const TasksProvider = props => {
   };
 
   const deleteTasks = task => {
-    return fetch(`http://localhost:3000/tasks/${task.id}`, {
+    return fetch(`http://localhost:8088/tasks/${task.id}`, {
       method: "DELETE"
     }).then(getTasks);
   };
