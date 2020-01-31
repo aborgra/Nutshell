@@ -41,7 +41,18 @@ export default props => {
                 let formattedTime = formattedDate[4].split(":")
                 let formattedHour = parseInt(formattedTime[0], 10)
                 if (formattedHour > 11) {
+                    console.log("formattedHour line 44")
+                    console.log(formattedHour)
                     formattedHour -= 12
+                    console.log("formattedHour line 47")
+                    console.log(formattedHour)
+                    if (formattedHour === 0) {
+                        console.log("formattedHour line 50")
+                        console.log(formattedHour)
+                        formattedHour = 12
+                        console.log("formattedHour line 53")
+                        console.log(formattedHour)
+                    }
                     formattedTime[0] = formattedHour.toString()
                     formattedDate[5] = "PM"
                 } else {
@@ -49,12 +60,12 @@ export default props => {
                 }
                 formattedDate[4] = formattedTime.slice(0, 2).join(":")
                 formattedDate = formattedDate.slice(0, 6).join(" ")
-                console.log(formattedDate)
                 editEvent({
                     id: event.id,
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),
                     name: eventName.current.value,
-                    date: formattedDate,
+                    date: eventDate.current.value,
+                    formattedDate: formattedDate,
                     location: eventLocation.current.value
                 })
                     .then(() => props.history.push("/"))
@@ -67,6 +78,9 @@ export default props => {
                 let formattedHour = parseInt(formattedTime[0], 10)
                 if (formattedHour > 11) {
                     formattedHour -= 12
+                    if (formattedHour === 0) {
+                        formattedHour = 12
+                    }
                     formattedTime[0] = formattedHour.toString()
                     formattedDate[5] = "PM"
                 } else {
@@ -74,17 +88,19 @@ export default props => {
                 }
                 formattedDate[4] = formattedTime.slice(0, 2).join(":")
                 formattedDate = formattedDate.slice(0, 6).join(" ")
+                console.log("formattedDate")
                 console.log(formattedDate)
                 addEvent({
                     id: event.id,
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),
                     name: eventName.current.value,
-                    date: formattedDate,
+                    formattedDate: formattedDate,
+                    date: eventDate.current.value,
                     location: eventLocation.current.value
                 })
                     .then(() => props.history.push("/"))
             }
-    }
+    }    
 
     return (
         <form className="eventForm">
