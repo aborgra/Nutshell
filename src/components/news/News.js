@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import { NewsContext } from "./NewsProvider";
+import "./News.css"
+
+
 
 export default ({ news, props, friendStatus }) => {
   const { deleteNews } = useContext(NewsContext);
+  let newsSectionClass = 'newsCard'
   let deleteNewsButton = ""
   let editNewsButton = ""
   if (friendStatus === false) {
@@ -12,17 +16,18 @@ export default ({ news, props, friendStatus }) => {
           deleteNews(news);
         }
       }>Delete News</button>
-    </>
-  }
-  if (friendStatus === false) {
-    editNewsButton = <>
-      <button onClick={() => {
+       <button onClick={() => {
         props.history.push(`/editNews/${news.id}`)
       }}>Edit</button>
+      
     </>
+  } 
+  if (friendStatus === true) {
+    newsSectionClass= "friendsClass"
   }
+
   return (
-    <section className="newsCard">
+    <section className={newsSectionClass}>
       <div>Title: {news.title} </div>
       <div>Synopsis: {news.synopsis} </div>
       <a href="{news.url}">{news.url}</a>
@@ -33,3 +38,5 @@ export default ({ news, props, friendStatus }) => {
   );
 };
 
+
+//italicize font and cornsilk background
