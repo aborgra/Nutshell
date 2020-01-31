@@ -13,3 +13,8 @@
   margin: 5px;
   margin-top: 10px;
 }
+
+.card-img, .card-img-top {
+  border-top-left-radius: 100% !important;
+  border-top-right-radius: 100% !important;
+}
