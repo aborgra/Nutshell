@@ -35,23 +35,75 @@ export default props => {
     const constructNewEvent = () => {
             if (editMode) {
                 let formattedDate = new Date(eventDate.current.value).toString()
+                console.log(`formattedDate is ${formattedDate}`)
                 formattedDate = formattedDate.split(" ")
-                formattedDate[0] += "."
-                formattedDate[1] += "."
+                switch (formattedDate[0]) {
+                    case "Sun":
+                        formattedDate[0] = "Sunday,";
+                        break;
+                    case "Mon":
+                        formattedDate[0] = "Monday,";
+                        break;
+                    case "Tue":
+                        formattedDate[0] = "Tuesday,";
+                        break;
+                    case "Wed":
+                        formattedDate[0] = "Wednesday,";
+                        break;
+                    case "Thu":
+                        formattedDate[0] = "Thursday,";
+                        break;
+                    case "Fri":
+                        formattedDate[0] = "Friday,";
+                        break;
+                    case "Sat":
+                        formattedDate[0] = "Saturday,";
+                        break;
+                }
+                switch (formattedDate[1]) {
+                    case "Jan":
+                        formattedDate[1] = "January";
+                        break;
+                    case "Feb":
+                        formattedDate[1] = "February";
+                        break;
+                    case "Mar":
+                        formattedDate[1] = "March";
+                        break;
+                    case "Apr":
+                        formattedDate[1] = "April";
+                        break;
+                    case "May":
+                        formattedDate[1] = "May";
+                        break;
+                    case "Jun":
+                        formattedDate[1] = "June";
+                        break;
+                    case "Jul":
+                        formattedDate[1] = "July";
+                        break;
+                    case "Aug":
+                        formattedDate[1] = "August";
+                        break;
+                    case "Sep":
+                        formattedDate[1] = "September";
+                        break;
+                    case "Oct":
+                        formattedDate[1] = "October";
+                        break;
+                    case "Nov":
+                        formattedDate[1] = "November";
+                        break;
+                    case "Dec":
+                        formattedDate[1] = "December"
+                        break;
+                }
                 let formattedTime = formattedDate[4].split(":")
                 let formattedHour = parseInt(formattedTime[0], 10)
                 if (formattedHour > 11) {
-                    console.log("formattedHour line 44")
-                    console.log(formattedHour)
                     formattedHour -= 12
-                    console.log("formattedHour line 47")
-                    console.log(formattedHour)
                     if (formattedHour === 0) {
-                        console.log("formattedHour line 50")
-                        console.log(formattedHour)
                         formattedHour = 12
-                        console.log("formattedHour line 53")
-                        console.log(formattedHour)
                     }
                     formattedTime[0] = formattedHour.toString()
                     formattedDate[5] = "PM"
@@ -59,6 +111,7 @@ export default props => {
                     formattedDate[5] = "AM"
                 }
                 formattedDate[4] = formattedTime.slice(0, 2).join(":")
+                formattedDate[4] = " at " + formattedDate[4]
                 formattedDate = formattedDate.slice(0, 6).join(" ")
                 editEvent({
                     id: event.id,
@@ -71,9 +124,71 @@ export default props => {
                     .then(() => props.history.push("/"))
             } else {
                 let formattedDate = new Date(eventDate.current.value).toString()
+                console.log(`formattedDate is ${formattedDate}`)
                 formattedDate = formattedDate.split(" ")
-                formattedDate[0] += "."
-                formattedDate[1] += "."
+                switch (formattedDate[0]) {
+                    case "Sun":
+                        formattedDate[0] = "Sunday,";
+                        break;
+                    case "Mon":
+                        formattedDate[0] = "Monday,";
+                        break;
+                    case "Tue":
+                        formattedDate[0] = "Tuesday,";
+                        break;
+                    case "Wed":
+                        formattedDate[0] = "Wednesday,";
+                        break;
+                    case "Thu":
+                        formattedDate[0] = "Thursday,";
+                        break;
+                    case "Fri":
+                        formattedDate[0] = "Friday,";
+                        break;
+                    case "Sat":
+                        formattedDate[0] = "Saturday,";
+                        break;
+                }
+                switch (formattedDate[1]) {
+                    case "Jan":
+                        formattedDate[1] = "January";
+                        break;
+                    case "Feb":
+                        formattedDate[1] = "February";
+                        break;
+                    case "Mar":
+                        formattedDate[1] = "March";
+                        break;
+                    case "Apr":
+                        formattedDate[1] = "April";
+                        break;
+                    case "May":
+                        formattedDate[1] = "May";
+                        break;
+                    case "Jun":
+                        formattedDate[1] = "June";
+                        break;
+                    case "Jul":
+                        formattedDate[1] = "July";
+                        break;
+                    case "Aug":
+                        formattedDate[1] = "August";
+                        break;
+                    case "Sep":
+                        formattedDate[1] = "September";
+                        break;
+                    case "Oct":
+                        formattedDate[1] = "October";
+                        break;
+                    case "Nov":
+                        formattedDate[1] = "November";
+                        break;
+                    case "Dec":
+                        formattedDate[1] = "December"
+                        break;
+                }
+                formattedDate[2] = parseInt(formattedDate[2], 10).toString()
+                formattedDate[2] += ","
                 let formattedTime = formattedDate[4].split(":")
                 let formattedHour = parseInt(formattedTime[0], 10)
                 if (formattedHour > 11) {
@@ -87,9 +202,10 @@ export default props => {
                     formattedDate[5] = "AM"
                 }
                 formattedDate[4] = formattedTime.slice(0, 2).join(":")
-                formattedDate = formattedDate.slice(0, 6).join(" ")
-                console.log("formattedDate")
+                formattedDate[4] = " at " + formattedDate[4]
+                console.log("formattedDate line 204")
                 console.log(formattedDate)
+                formattedDate = formattedDate.slice(0, 6).join(" ")
                 addEvent({
                     id: event.id,
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),

@@ -1,0 +1,9 @@
+.friendEvent {
+    font-style: italic;
+    background-color: rgba(218, 165, 32, 0.514)
+}
+
+.latestEvent {
+    font-weight: bold;
+    background-color: rgb(230, 255, 247);
+}

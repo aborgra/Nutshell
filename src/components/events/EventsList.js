@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { EventContext } from "./EventsProvider"
 import { FriendContext } from "../friends/FriendProvider"
 import Event from "./Event"
-// import "./Events.css"
+import "./Events.css"
 
 export default (props) => {
     const { events } = useContext(EventContext)
@@ -25,8 +25,6 @@ export default (props) => {
     sortedEvents.sort(function(a, b) {
         return new Date(a.date) - new Date(b.date);
       });
-    console.log("sorted events")
-    console.log(sortedEvents)
 
     return (
         <div className="events">

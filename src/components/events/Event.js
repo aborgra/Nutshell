@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { EventContext } from "./EventsProvider"
-// import "./Events.css"
+import "./Events.css"
 
 
 export default ({event, props, friend, next}) => {
