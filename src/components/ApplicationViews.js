@@ -7,6 +7,7 @@ import EventsList from "./events/EventsList"
 import EventForm from "./events/EventForm"
 import NewsList from "./news/NewsList"
 import MessagesList from "./messages/MessagesList"
+import EditMessageForm from "./messages/MessageEditForm"
 import "./Nutshell.css"
 
 export default (props) => {
@@ -43,8 +44,11 @@ export default (props) => {
              <Route  exact path="/editNews/:newsId(\d+)" render={
               props => <NewsForm {...props} />}
             />
+            <Route  exact path="/editMessage/:messageId(\d+)" render={
+              props => <EditMessageForm {...props} />}
+            />
     </ProviderProvider>
    
     </>
-  );
-};
+  )
+}

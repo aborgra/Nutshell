@@ -4,7 +4,7 @@ import { UserContext } from "../users/UserProvider";
 import Message from "./Message";
 import "./Messages.css";
 
-export default () => {
+export default (props) => {
   const { messages, addMessages, editMessage } = useContext(
     MessageContext
   );
@@ -34,7 +34,8 @@ export default () => {
     
     <div className="messages">
       {messages.map(m => (
-        <Message key={m.id} message={m} />
+        <Message {...props} 
+        key={m.id} message={m} />
       ))}
       <form className="messagesForm">
       <textarea
