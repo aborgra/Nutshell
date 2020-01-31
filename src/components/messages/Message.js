@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../users/UserProvider";
 import { FriendContext } from "../friends/FriendProvider";
-
+import slothPic from "../pics/slothPic.jpg"
+import sloth from "../pics/sloth.jpg"
+import "./Messages.css"
 
 export default ({ message, history }) => {
   const userId = parseInt(localStorage.getItem("nutshell_user"));
@@ -53,12 +55,15 @@ export default ({ message, history }) => {
 
   return (
     <section className="message">
-      <h3 className="message__name"
+      <div className="friendMessageTitle">
+      <img  className="friendMessage__img card-img-top" src={sloth}/>
+      <h5 className="message__name"
       onClick={evt => {
         evt.preventDefault();
         constructNewFriend(message.user)
       }}>{message.user.userName}
-      </h3>
+      </h5>
+      </div>
       <div className="message__text">{message.message}</div>
       {editMessageButton}
     </section>

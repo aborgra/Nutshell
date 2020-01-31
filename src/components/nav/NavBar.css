@@ -1,5 +1,6 @@
 
 .navbar {
+  background-color: #b2bd7e;
   display: flex;
   flex-wrap: nowrap;
   justify-content: left;
@@ -8,7 +9,12 @@
 .navbar__item {
   flex-basis: 20%;
   list-style-type: none;
+  text-align: center;
 }
+
+
+
+
 
 .navbar-inverse{
   background-color: #222;
