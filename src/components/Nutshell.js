@@ -6,6 +6,8 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import "./Nutshell.css"
 
+import { Button , Alert, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 export default () => (
     <>
         <Route render={() => {

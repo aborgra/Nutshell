@@ -6,9 +6,7 @@ export default props => {
   return (
     <ul className="navbar">
       <li className="navbar__item active">
-        <Link className="navbar__link" to="/">
-          Nutshell
-        </Link>
+        Welcome to Nutshell
       </li>
 {
     localStorage.getItem("nutshell_user")

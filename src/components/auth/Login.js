@@ -34,29 +34,29 @@ const Login = props => {
     }
 
     return (
-        <main className="container--login">
+        <main className="form-group logInFormContainer">
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Welcome to Nutshell</h1>
                     <h2>Please sign in</h2>
-                    <fieldset>
+                    <fieldset className="logInUserContainer">
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email"
                             id="email"
-                            className="form-control"
+                            className="form-control logInUser"
                             placeholder="Email address"
                             required autoFocus />
                     </fieldset>
-                    <fieldset>
+                    <fieldset className="logInPassContainer">
                         <label htmlFor="inputPassword"> Password </label>
                         <input ref={password} type="password"
                             id="password"
-                            className="form-control"
+                            className="form-control logInPass"
                             placeholder="Password"
                             required />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button className="btn btn-primary logInButton" type="submit">
                             Sign in
                     </button>
                     </fieldset>
