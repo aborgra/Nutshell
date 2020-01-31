@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { NewsContext } from "./NewsProvider"
 import { UserContext } from "../users/UserProvider"
 
@@ -6,13 +6,9 @@ import { UserContext } from "../users/UserProvider"
 export default props => {
   const { addNews, news, editNews } = useContext(NewsContext)
   const [singleNews, setSingleNews] = useState({})
-  const newsTitle = useRef("")
-  const newsUrl = useRef("")
-  const newsSynopsis = useRef("")
 
   const editMode = props.match.params.hasOwnProperty("newsId")
   
-
   const handleControlledInputChange = (event) => {
     /*
         When changing a state object or array, always create a new one
@@ -41,7 +37,7 @@ export default props => {
             id: singleNews.id,
             title: singleNews.title,
             synopsis: singleNews.synopsis,
-            url: newsUrl.current.value,
+            url: singleNews.url,
             date: singleNews.date,
             userId: parseInt(localStorage.getItem("nutshell_user"))
         })
@@ -51,9 +47,9 @@ export default props => {
       const currentDate = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
       '-' + date.getDate().toString().padStart(2, 0);
         addNews({
-            title: newsTitle.current.value,
-            synopsis: newsSynopsis.current.value,
-            url: newsUrl.current.value,
+            title: singleNews.title,
+            synopsis: singleNews.synopsis,
+            url: singleNews.url,
             date: new Date(currentDate).toLocaleDateString('en-US'),
             userId: parseInt(localStorage.getItem("nutshell_user"))
         })
@@ -69,7 +65,7 @@ export default props => {
         <div className="form-group">
           <label htmlFor="name">news Title: </label>
           <input type="text" name="title" required autoFocus className="form-control"
-            ref= {newsTitle}
+   
             proptype="varchar"
             placeholder="News Title"
             defaultValue={singleNews.title}
@@ -81,7 +77,7 @@ export default props => {
         <div className="form-group">
           <label htmlFor="name">news Url: </label>
           <input type="text" name="url" required autoFocus className="form-control"
-            ref= {newsUrl}
+
             proptype="varchar"
             placeholder="url"
             defaultValue={singleNews.url}
@@ -93,7 +89,7 @@ export default props => {
         <div className="form-group">
           <label htmlFor="treatment">Synopsis: </label>
           <textarea type="text" name="synopsis" className="form-control"
-            ref= {newsSynopsis}
+           
             proptype="varchar"
             placeholder="What's slothing?"
             value={singleNews.synopsis}
