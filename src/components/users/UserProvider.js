@@ -32,7 +32,7 @@ export const UserProvider = (props) => {
 
   return (
     <UserContext.Provider value = {{
-      users, addUser
+      users, addUser, getUsers
     }}>
         {props.children}
     </UserContext.Provider>
