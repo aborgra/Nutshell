@@ -23,7 +23,7 @@ export const TasksProvider = props => {
     }).then(getTasks);
   };
 
-  const updateTasks = taskObject => {
+  const editTasks = taskObject => {
     return fetch(`http://localhost:8088/tasks/${taskObject.id}`, {
       method: "PUT",
       headers: {
@@ -52,7 +52,7 @@ export const TasksProvider = props => {
       value={{
         tasks,
         addTasks,
-        updateTasks,
+        editTasks,
         deleteTasks
       }}>
       {props.children}

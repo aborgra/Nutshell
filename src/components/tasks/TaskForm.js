@@ -1,57 +1,92 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { TasksContext } from "./TaskProvider";
-import "./Tasks.css";
 
 export default props => {
-  const { addTasks } = useContext(TasksContext);
-  const tasksName = useRef("");
-  const tasksDate = useRef(null);
+  const { addTasks, tasks, editTasks } = useContext(TasksContext);
+  const [task, setTasks] = useState({});
+  const dateCompleted = useRef(null);
 
-  const constructNewTasks = () => {
-    const tasksValue = tasksName.current.value;
-    if (tasksValue === "") {
-      alert("Please enter task");
+  const editMode = props.match.params.hasOwnProperty("tasksId");
+
+  const handleControlledInputChange = event => {
+    /*
+            When changing a state object or array, always create a new one
+            and change state instead of modifying current one
+        */
+    const newTask = Object.assign({}, task);
+    newTask[event.target.name] = event.target.value;
+    setTasks(newTask);
+  };
+
+  const setDefaults = () => {
+    if (editMode) {
+      const taskId = parseInt(props.match.params.tasksId);
+      const selectedTask = tasks.find(singleTask => singleTask.id === taskId) || {};
+      setTasks(selectedTask);
+    }
+  };
+
+  useEffect(() => {
+    setDefaults();
+  }, [tasks]);
+
+  const constructNewTask = () => {
+    if (task.name === "") {
+      window.alert("Please enter task");
     } else {
-      addTasks({
-        name: tasksValue,
-        completionDate: tasksDate,
-        isCompleted: false
-      }).then(() => props.history.push("/"));
+      if (editMode) {
+        console.log(task.id);
+        editTasks({
+          id: task.id,
+          name: task.name,
+          completionDate: dateCompleted.current.value,
+          isCompleted: false,
+          userId: parseInt(localStorage.getItem("nutshell_user"))
+        }).then(() => props.history.push("/"));
+      } else {
+        addTasks({
+          name: task.name,
+          completionDate: dateCompleted.current.value,
+          isCompleted: false,
+          userId: parseInt(localStorage.getItem("nutshell_user"))
+        }).then(() => props.history.push("/"));
+      }
     }
   };
 
   return (
-    <form className="tasksForm">
-      <h2 className="tasksForm__title">Tasks</h2>
+    <form className="taskForm">
+      <h2 className="taskForm__title">{editMode ? "Update Task" : "Save Task"}</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="tasksName">Tasks name</label>
-          <br />
-          <input type="text" name="tasksName" ref={tasksName} required autoFocus className="form-control" placeholder="Task name" />
+          <label htmlFor="name">Task name: </label>
+          <input
+            type="text"
+            name="name"
+            required
+            autoFocus
+            className="form-control"
+            proptype="varchar"
+            placeholder="Task name"
+            defaultValue={task.name}
+            onChange={handleControlledInputChange}
+          />
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="location">Completion Date</label>
-          <br />
-          <input type="date" ref={tasksDate} />
+          <label htmlFor="tasks">Task Date: </label>
+          <input type="date" name="date" ref={dateCompleted} required className="form-control" defaultValue={task.completionDate} onChange={handleControlledInputChange} />
         </div>
       </fieldset>
       <button
         type="submit"
         onClick={clickEvent => {
           clickEvent.preventDefault();
-          constructNewTasks();
+          constructNewTask();
         }}
         className="btn btn-primary">
-        Save Tasks
-      </button>
-      <button
-        onClick={clickEvent => {
-          clickEvent.preventDefault();
-          props.history.push("/");
-        }}>
-        Close
+        {editMode ? "Save Updates" : "Create Tasks"}
       </button>
     </form>
   );
