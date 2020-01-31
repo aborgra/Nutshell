@@ -49,43 +49,43 @@ const Register = props => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
-            <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Nutshell</h1>
-                <fieldset>
+        <main>
+            <form className="form--login registerContainer" onSubmit={handleRegister}>
+                <h1 className="h3 mb-3 font-weight-normal registerHeader">Please Register for Nutshell</h1>
+                <fieldset className="registerUserContainer">
                     <label htmlFor="userName"> Username </label>
                     <input ref={userName} type="text"
                         name="userName"
-                        className="form-control"
+                        className="form-control registerUser"
                         placeholder="Username"
                         required autoFocus />
                 </fieldset>
-                <fieldset>
+                <fieldset className="registerEmailContainer">
                     <label htmlFor="inputEmail"> Email address </label>
                     <input ref={email} type="email"
                         name="email"
-                        className="form-control"
+                        className="form-control registerEmail"
                         placeholder="Email address"
                         required />
                 </fieldset>
-                <fieldset>
+                <fieldset className="registerPassContainer">
                     <label htmlFor="inputPassword"> Password </label>
                     <input ref={password} type="password"
                         name="password"
-                        className="form-control"
+                        className="form-control registerPass"
                         placeholder="Password"
                         required />
                 </fieldset>
-                <fieldset>
+                <fieldset className="confirmPassContainer">
                     <label htmlFor="verifyPassword"> Verify Password </label>
                     <input ref={verifyPassword} type="password"
                         name="verifyPassword"
-                        className="form-control"
+                        className="form-control confirmPass"
                         placeholder="Verify password"
                         required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit">
+                    <button className="btn btn-primary registerButton" type="submit">
                         Sign in
                     </button>
                 </fieldset>

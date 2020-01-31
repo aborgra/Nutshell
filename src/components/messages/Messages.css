@@ -1,0 +1,20 @@
+.friendMessageTitle{
+  display: flex;
+}
+
+.friendMessage__img{
+  border-radius: 100%;
+  max-width: 25px;
+  max-height: 25px;
+  margin-right: 5px;
+}
+
+.message{
+  margin: 5px;
+  margin-top: 10px;
+}
+
+.card-img, .card-img-top {
+  border-top-left-radius: 100% !important;
+  border-top-right-radius: 100% !important;
+}

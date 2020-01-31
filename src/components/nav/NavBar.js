@@ -16,14 +16,14 @@ const { users } = useContext(UserContext)
 {
     localStorage.getItem("nutshell_user")
         ? <li className="navbar__item">
-            <Link className="navbar__link"
-                to=""
-                onClick={e => {
+          <button className= "logoutButton btn btn-secondary " onClick={e => {
                     e.preventDefault()
                     localStorage.removeItem("nutshell_user")
                     props.history.push("/")
-                }}
-            >Logout</Link>
+                }}>
+            Log Out
+          </button>
+  
         </li>
         : ""
 }
