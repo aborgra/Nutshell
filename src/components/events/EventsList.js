@@ -21,7 +21,7 @@ export default (props) => {
 
     console.log("unsorted events")
     console.log(events)
-    const sortedEvents = events
+    const sortedEvents = filteredEvents
     sortedEvents.sort(function(a, b) {
         return new Date(a.date) - new Date(b.date);
       });
