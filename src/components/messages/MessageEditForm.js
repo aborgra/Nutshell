@@ -54,12 +54,11 @@ export default props => {
 
   return (
     <form className="newsForm">
-      <h2 className="newsForm__title">"Slowly Edit"</h2>
+      <h2 className="newsForm__title">Edit Message</h2>
       <fieldset>
         <div className="form-group">
           <label htmlFor="name">Message: </label>
           <input type="text" name="message" required autoFocus className="form-control"
-            ref= {messageText}
             proptype="varchar"
             placeholder="News Title"
             defaultValue={singleMessage.message}
@@ -74,7 +73,7 @@ export default props => {
           constructNewMessage()
         }}
         className="btn btn-primary">
-        "Save those changes"
+        Save Changes
       </button>
     </form>
   )

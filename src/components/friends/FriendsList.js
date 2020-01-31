@@ -34,13 +34,18 @@ export default () => {
           addFriend({
             userId: foundUser.id,
             friendInitiateId: parseInt(localStorage.getItem("nutshell_user"))
-          });
-          // .then(() => props.history.push("/"));
+          })
+          .then(() => {friendName.current.value = ""})
+
         } else {
-          alert("User is already a friend");
+          alert("User is already a friend")
+          {friendName.current.value = ""}
+
         }
       } else {
-        alert("You can't add yourself, dummy");
+        alert("You can't add yourself, dummy")
+        {friendName.current.value = ""}
+
       }
     }
   };
