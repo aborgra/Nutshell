@@ -8,31 +8,30 @@ import "./Nutshell.css";
 import ProviderProvider from "./providers/ProviderProvider";
 import { UserContext } from "./users/UserProvider";
 
-export default () => 
-(
-
-    
-
+export default () => (
   <>
-    <ProviderProvider>
-      <Route
-        render={() => {
-          if (localStorage.getItem("nutshell_user")) {
-            return (
-              <>
-                <Route render={props => <ApplicationViews {...props} />} />
-                <Route render={props => <NavBar {...props} />} />
+    <Route
+      render={() => {
+        if (localStorage.getItem("nutshell_user")) {
+          return (
+            <>
+              <Route
+                render={props => (
+                  <ProviderProvider>
+                    <NavBar {...props} />
+                  </ProviderProvider>
+                )}
+              />
+              <Route render={props => <ApplicationViews {...props} />} />
+            </>
+          );
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+    />
 
-              </>
-            );
-          } else {
-            return <Redirect to="/login" />;
-          }
-        }}
-      />
-
-      <Route path="/login" render={props => <Login {...props} />} />
-      <Route path="/register" render={props => <Register {...props} />} />
-    </ProviderProvider>
+    <Route path="/login" render={props => <Login {...props} />} />
+    <Route path="/register" render={props => <Register {...props} />} />
   </>
 );

@@ -7,12 +7,12 @@ export default props => {
 
 const { users } = useContext(UserContext)
   const activeUserId = parseInt(localStorage.getItem("nutshell_user"))
-  const activeUser = users.find(user => user.id === activeUserId)
+  const activeUser = users.find(user => user.id === activeUserId) || {}
   console.log(activeUserId)
 
   return (
     <ul className="navbar">
-      <div className="navbar__message">{activeUser.userName} - Moving at the speed of sloth</div>
+      <div className="navbar__message">{activeUser.userName} - Moving at the speed of sloth.</div>
 {
     localStorage.getItem("nutshell_user")
         ? <li className="navbar__item">
