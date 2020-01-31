@@ -28,7 +28,9 @@ export default (props) => {
                   <EventsList {... props} />
                   <MessagesList {...props} />
                 </div>
-                <div className="tasksContainer"></div>
+                <div className="tasksContainer">
+                  
+                </div>
               </section>
               </>
             )}} />
