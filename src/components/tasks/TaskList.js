@@ -5,9 +5,13 @@ import "./Tasks.css";
 
 export default props => {
   const { tasks } = useContext(TasksContext);
+
   const userId = localStorage.getItem("nutshell_user");
+
   const foundTask = tasks.filter(task => task.userId === parseInt(userId, 10));
+
   const visibleTasks = foundTask.filter(task => task.isCompleted === false);
+
   const sortedTasks = visibleTasks.sort((taskA, taskB) => Date.parse(taskA.completionDate) - Date.parse(taskB.completionDate));
 
   return (
