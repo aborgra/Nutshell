@@ -18,7 +18,7 @@ export default (props) => {
     friends.map(friend => {
         if (friend.friendInitiateId === parseInt(localStorage.getItem("nutshell_user"))) {
             news.filter(
-                article => {
+                article => {  
                     if (article.userId === friend.user.id) {
                         friendsNews.push(article)
                     }
