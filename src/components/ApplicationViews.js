@@ -30,9 +30,10 @@ export default props => {
                     <NewsList {...props} />
                     <EventsList {...props} />
                     <MessagesList {...props} />
+                  </div>
+                  <div className="tasksContainer">
                     <TaskList {...props} />
                   </div>
-                  <div className="tasksContainer"></div>
                 </section>
               </>
             );

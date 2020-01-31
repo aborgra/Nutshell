@@ -8,7 +8,7 @@ export default props => {
   const userId = localStorage.getItem("nutshell_user");
   const foundTask = tasks.filter(task => task.userId === parseInt(userId, 10));
   const visibleTasks = foundTask.filter(task => task.isCompleted === false);
-  const sortedTasks = visibleTasks.sort((taskA, taskB) => Date.parse(taskB.completionDate) - Date.parse(taskA.completionDate));
+  const sortedTasks = visibleTasks.sort((taskA, taskB) => Date.parse(taskA.completionDate) - Date.parse(taskB.completionDate));
 
   return (
     <>
