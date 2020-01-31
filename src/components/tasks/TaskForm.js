@@ -86,7 +86,7 @@ export default props => {
           constructNewTask();
         }}
         className="btn btn-primary">
-        {editMode ? "Save Updates" : "Create Tasks"}
+        {editMode ? "Save Updates" : "Save Task"}
       </button>
       <button onClick={() => props.history.push("/")}>Close</button>
     </form>
