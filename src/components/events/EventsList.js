@@ -19,7 +19,14 @@ export default (props) => {
 
     const filteredEvents = events.filter(event => event.userId === activeUserId || friendsIdsArray.includes(event.userId))
 
-    const sortedEvents = filteredEvents.sort((a, b) => b.date = a.date)
+    console.log("unsorted events")
+    console.log(events)
+    const sortedEvents = events
+    sortedEvents.sort(function(a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
+    console.log("sorted events")
+    console.log(sortedEvents)
 
     return (
         <div className="events">
