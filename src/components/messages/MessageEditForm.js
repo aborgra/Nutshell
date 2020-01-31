@@ -3,19 +3,14 @@ import { MessageContext } from "./MessageProvider"
 
 
 export default props => {
-  const { addMessages, messages, editMessage } = useContext(MessageContext)
+  const { messages, editMessage } = useContext(MessageContext)
   const [singleMessage, setSingleMessage] = useState({})
-  const messageText = useRef("")
   
 
-  // const editMode = props.match.params.hasOwnProperty("messageId")
   
 
   const handleControlledInputChange = (event) => {
-    /*
-        When changing a state object or array, always create a new one
-        and change state instead of modifying current one
-    */
+   
     const newSingleMessage = Object.assign({}, singleMessage)
     newSingleMessage[event.target.name] = event.target.value
     setSingleMessage(newSingleMessage)
@@ -59,12 +54,11 @@ export default props => {
 
   return (
     <form className="newsForm">
-      <h2 className="newsForm__title">"Slowly Edit"</h2>
+      <h2 className="newsForm__title">Edit Message</h2>
       <fieldset>
         <div className="form-group">
           <label htmlFor="name">Message: </label>
           <input type="text" name="message" required autoFocus className="form-control"
-            ref= {messageText}
             proptype="varchar"
             placeholder="News Title"
             defaultValue={singleMessage.message}
@@ -79,7 +73,7 @@ export default props => {
           constructNewMessage()
         }}
         className="btn btn-primary">
-        "Save those changes"
+        Save Changes
       </button>
     </form>
   )
