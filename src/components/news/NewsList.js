@@ -28,8 +28,9 @@ export default (props) => {
     })
 
     const combinedArray = usersNews.concat(friendsNews)
-
-
+    const sortedCombinedArray = combinedArray.sort(function(a, b) {
+      return new Date(b.date) - new Date(a.date);
+    })
 
   return (
     <section>
@@ -37,7 +38,7 @@ export default (props) => {
                 props.history.push(`/createNews`)
             }}>Add News</button>
       {
-        combinedArray.map(singleNews => {
+        sortedCombinedArray.map(singleNews => {
           if (singleNews.userId != parseInt(localStorage.getItem("nutshell_user"))) {
             isFriend = true;
 

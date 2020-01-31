@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { NewsContext } from "./NewsProvider";
 import "./News.css"
 
-
-
 export default ({ news, props, friendStatus }) => {
   const { deleteNews } = useContext(NewsContext);
   let newsSectionClass = 'newsCard'

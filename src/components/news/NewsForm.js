@@ -43,14 +43,30 @@ export default props => {
         })
             .then(() => props.history.push("/"))
     } else {
-      const date = new Date();
-      const currentDate = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
-      '-' + date.getDate().toString().padStart(2, 0);
+
+      let formattedDate = new Date().toString()
+      formattedDate = formattedDate.split(" ")
+      formattedDate[0] += "."
+      formattedDate[1] += "."
+      let formattedTime = formattedDate[4].split(":")
+      let formattedHour = parseInt(formattedTime[0], 10)
+      if (formattedHour > 11) {
+          formattedHour -= 12
+          if (formattedHour = 0) {
+              formattedHour = 12
+          }
+          formattedTime[0] = formattedHour.toString()
+          formattedDate[5] = "PM"
+      } else {
+          formattedDate[5] = "AM"
+      }
+      formattedDate[4] = formattedTime.slice(0, 2).join(":")
+      formattedDate = formattedDate.slice(0, 6).join(" ")
         addNews({
             title: singleNews.title,
             synopsis: singleNews.synopsis,
             url: singleNews.url,
-            date: new Date(currentDate).toLocaleDateString('en-US'),
+            date: formattedDate,
             userId: parseInt(localStorage.getItem("nutshell_user"))
         })
             .then(() => props.history.push("/"))
