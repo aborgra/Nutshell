@@ -3,19 +3,14 @@ import { MessageContext } from "./MessageProvider"
 
 
 export default props => {
-  const { addMessages, messages, editMessage } = useContext(MessageContext)
+  const { messages, editMessage } = useContext(MessageContext)
   const [singleMessage, setSingleMessage] = useState({})
-  const messageText = useRef("")
   
 
-  // const editMode = props.match.params.hasOwnProperty("messageId")
   
 
   const handleControlledInputChange = (event) => {
-    /*
-        When changing a state object or array, always create a new one
-        and change state instead of modifying current one
-    */
+   
     const newSingleMessage = Object.assign({}, singleMessage)
     newSingleMessage[event.target.name] = event.target.value
     setSingleMessage(newSingleMessage)
