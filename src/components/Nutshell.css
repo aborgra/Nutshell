@@ -1,0 +1,20 @@
+.dashboardContainer{
+  display: flex;
+}
+
+.friendsListContainer{
+  border: 1px solid black;
+  flex-basis: 25%;
+  margin: 10px;
+}
+
+.newsEventsMessagesContainer{
+  border: 1px solid black;
+  flex-basis: 50%;
+  margin: 10px;
+}
+
+.tasksContainer{
+  border: 1px solid black;
+  flex-basis: 25%;
+}

@@ -8,6 +8,7 @@ import EventForm from "./events/EventForm"
 import NewsList from "./news/NewsList"
 import MessagesList from "./messages/MessagesList"
 import EditMessageForm from "./messages/MessageEditForm"
+import "./Nutshell.css"
 
 export default (props) => {
   return (
@@ -18,10 +19,17 @@ export default (props) => {
           props => {
             return(
               <>
-              <FriendsList {...props} />
-              <NewsList {...props} />
-              <MessagesList {...props} />
-              <EventsList {... props} />
+              <section className="dashboardContainer">
+                <div className="friendsListContainer">
+                  <FriendsList {...props} />
+                </div>
+                <div className="newsEventsMessagesContainer">
+                  <NewsList {...props} />
+                  <EventsList {... props} />
+                  <MessagesList {...props} />
+                </div>
+                <div className="tasksContainer"></div>
+              </section>
               </>
             )}} />
             <Route exact path="/editEvent/:eventId(\d+)" render={
