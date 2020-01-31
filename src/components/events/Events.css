@@ -7,3 +7,19 @@
     font-weight: bold;
     background-color: rgb(230, 255, 247);
 }
+
+.eventFormButtonSection {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#closingTimeButton {
+    padding: 0;
+    max-width: 10%;
+    margin: 10px 0px;
+}
+
+#eventFormSubmitButton {
+    max-width: 10%;
+}

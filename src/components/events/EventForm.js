@@ -6,6 +6,7 @@ export default props => {
     const [event, setEvent] = useState({})
     const eventName = useRef("")
     const eventDate = useRef("")
+    const eventClosingDate = useRef("")
     const eventLocation = useRef("")
 
     const editMode = props.match.params.hasOwnProperty("eventId")
@@ -118,6 +119,7 @@ export default props => {
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),
                     name: eventName.current.value,
                     date: eventDate.current.value,
+                    closingDate: eventClosingDate.current.value,
                     formattedDate: formattedDate,
                     location: eventLocation.current.value
                 })
@@ -212,11 +214,53 @@ export default props => {
                     name: eventName.current.value,
                     formattedDate: formattedDate,
                     date: eventDate.current.value,
+                    closingDate: eventClosingDate.current.value,
                     location: eventLocation.current.value
                 })
                     .then(() => props.history.push("/"))
             }
     }    
+
+    let closingTime = ""
+    let closingTimeRemoveButton = ""
+    let closingTimeButtonClicked = false
+    let closingTimeButton = <>
+                                <button id="closingTimeButton" onClick={
+                                    closingTimeButtonClicked = true
+                                }>+ End Time</button>
+                            </>
+
+    function showClosingTimeDefault() {
+        closingTime = <>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="date">Event date: </label>
+                        <input type="datetime-local" name="date" required className="form-control"
+                            ref={eventClosingDate}
+                            proptype="varchar"
+                            defaultValue={event.closingDate}
+                            onChange={handleControlledInputChange}
+                        />
+                    </div>
+                </fieldset>
+            </>
+    }
+
+    function showClosingTimeNoDefault() {
+        closingTime = <>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="date">Event date: </label>
+                        <input type="datetime-local" name="date" required className="form-control"
+                            ref={eventClosingDate}
+                            proptype="varchar"
+                            onChange={handleControlledInputChange}
+                        />
+                    </div>
+                </fieldset>
+            </>
+    }
+
 
     return (
         <form className="eventForm">
@@ -235,17 +279,6 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Event date: </label>
-                    <input type="datetime-local" name="date" required className="form-control"
-                        ref={eventDate}
-                        proptype="varchar"
-                        defaultValue={event.date}
-                        onChange={handleControlledInputChange}
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
                     <label htmlFor="location">Event location: </label>
                     <input type="text" name="location" required autoFocus className="form-control"
                         ref={eventLocation}
@@ -256,14 +289,30 @@ export default props => {
                     />
                 </div>
             </fieldset>
-            <button type="submit"
-                onClick={evt => {
-                    evt.preventDefault()
-                    constructNewEvent()
-                }}
-                className="btn btn-primary">
-                {editMode ? "Save Edit" : "Save New Event"}
-            </button>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">Event date: </label>
+                    <input type="datetime-local" name="date" required className="form-control"
+                        ref={eventDate}
+                        proptype="varchar"
+                        defaultValue={event.date}
+                        onChange={handleControlledInputChange}
+                    />
+                </div>
+            </fieldset>
+            <section className="eventFormButtonSection">
+                {closingTimeButton}
+                {closingTime}
+                {closingTimeRemoveButton}
+                <button id="eventFormSubmitButton" type="submit"
+                    onClick={evt => {
+                        evt.preventDefault()
+                        constructNewEvent()
+                    }}
+                    className="btn btn-primary">
+                    {editMode ? "Save Edit" : "Save New Event"}
+                </button>
+            </section>
         </form>
     )
 }
