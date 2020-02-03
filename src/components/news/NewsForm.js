@@ -121,6 +121,7 @@ export default props => {
         className="btn btn-primary">
         {editMode ? "Save those changes" : "Add that News!"}
       </button>
+      <button className="btn btn-light" onClick={() => props.history.push("/")}>Close</button>
     </form>
   )
 }
