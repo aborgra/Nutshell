@@ -11,7 +11,10 @@ export default ({ news, props, friendStatus }) => {
     deleteNewsButton = <>
       <button className="btn btn-light" onClick={
         () => {
-          deleteNews(news);
+         const confirm = window.confirm("Are you sure you want to delete this?")
+          if (confirm=== true ) {
+            deleteNews(news);
+          }
         }
       }>Delete</button>
        <button className="btn btn-light" onClick={() => {
@@ -25,13 +28,16 @@ export default ({ news, props, friendStatus }) => {
   }
 
   return (
+    
     <section className={newsSectionClass}>
-      <div>Title: {news.title} </div>
-      <div>Synopsis: {news.synopsis} </div>
+      <div className="newsInfo">
+      <div><span className="newsCardStyling">Title:</span> {news.title} </div>
+      <div className="synopsis"><span className="newsCardStyling">Synopsis:</span> {news.synopsis} </div>
       <a href="{news.url}">{news.url}</a>
-      <div>Date: {news.date}</div>
+      <div><span className="newsCardStyling">Date:</span> {news.date}</div>
       {deleteNewsButton}
       {editNewsButton}
+      </div>
     </section>
   );
 };

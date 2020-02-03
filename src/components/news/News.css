@@ -1,9 +1,16 @@
-
+.newsForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
 
 .friendsClass{
   background-color: rgba(218, 165, 32, 0.178);
   font-style: italic;
   padding: 5pt;
+  margin-top: 10px;
+  border-radius: 2pt;
 }
 
 .newsSection {
@@ -18,8 +25,23 @@
   display: none;
 }
 
+.newsButtonContainer{
+  display: flex;
+}
 .newsCard {
   margin-bottom: 10pt;
   padding: 5pt
 }
 
+.synopsis{
+  word-break: normal;
+}
+
+.newsInfo{
+  padding: 20px;
+  border-radius: 2pt;
+}
+
+.newsCardStyling{
+  font-weight: bold;
+}

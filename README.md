@@ -1,68 +1,119 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React- Nutshell
 
-## Available Scripts
+Nutshell is a social application designed for sloth enthusiasts.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+Install react packages:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npx create-react-app 
+npm i --save react-router-dom
+npm install --save bootstrap
+npm install --save reactstrap react react-dom
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+npm start from the root directory to run application
+```
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Features / Functionality
+1. Login/register as a new user
+1. Add/remove friends
+1. Add/edit/remove tasks
+1. Add/edit/remove news
+1. Add/edit/remove events
+1. Send receive public messages and edit yours
+1. Add friends from search or messages section
+1. View news and events of friends/self in chronological order
+1. Stay logged in on page refresh
+1. Logout
+1. Confirm password and username for security
+1. Mark tasks as complete
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Database sample
+Run a json server watching database.json on port 8088
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```JSON
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "Steve",
+      "email": "steve@me.com",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "userName": "Mo",
+      "email": "mo@me.com",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "userName": "Leah",
+      "email": "leah@me.com",
+      "password": "123"
+    }
+  ],
+  "news": [
+    {
+      "title": "Steve",
+      "date": "Fri. Jan. 31 2020 11:16 AM",
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "events": [
+    {
+      "userId": 6,
+      "name": "My mom's making dinner",
+      "date": "Fri Jan 01 2021 16:30:00 GMT-0600 (Central Standard Time)",
+      "location": "My house",
+      "id": 10
+    }
+  ],
+  "tasks": [
+    {
+      "userId": 1,
+      "name": "Present my findings",
+      "completionDate": "2020-01-25",
+      "id": 7,
+      "isCompleted": true
+    }
+   
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "message": "What's up?",
+      "userId": 1
+    }
+   
+  ],
+  "friends": [
+    {
+      "userId": 3,
+      "friendInitiateId": 4,
+      "active": true,
+      "id": 12
+    },
+    {
+      "friendInitiateId": 4,
+      "userId": 1,
+      "active": true,
+      "id": 13
+    }
+  ]
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+## Authors
+Onterio Wright
+Audrey Borgra
+William Green
+James Nitz
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Thank You's
+[NSS](http://nashvillesoftwareschool.com/)

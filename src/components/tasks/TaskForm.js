@@ -79,6 +79,7 @@ export default props => {
           <input type="date" name="date" ref={dateCompleted} required className="form-control" defaultValue={task.completionDate} onChange={handleControlledInputChange} />
         </div>
       </fieldset>
+      <div className="taskButtonContainer">
       <button
         type="submit"
         onClick={clickEvent => {
@@ -88,7 +89,8 @@ export default props => {
         className="btn btn-primary">
         {editMode ? "Save Updates" : "Save Task"}
       </button>
-      <button onClick={() => props.history.push("/")}>Close</button>
+      <button className="btn btn-light" onClick={() => props.history.push("/")}>Close</button>
+      </div>
     </form>
   );
 };

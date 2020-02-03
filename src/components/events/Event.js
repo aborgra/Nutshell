@@ -17,9 +17,10 @@ export default ({ event, props, friend, next }) => {
         <button
           className="btn btn-light"
           onClick={() => {
-            deleteEvent(event).then(() => {
-              props.history.push("/");
-            });
+            const confirm = window.confirm("Are you sure you want to delete this?")
+            if (confirm === true) {
+              deleteEvent(event)
+            }
           }}
         >
           Delete
