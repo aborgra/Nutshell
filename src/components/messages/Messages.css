@@ -18,3 +18,18 @@
   border-top-left-radius: 100% !important;
   border-top-right-radius: 100% !important;
 }
+
+.messages {
+  padding: 5px;
+  margin-top: 25px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.messagesContainer {
+  max-height: 900px
+}

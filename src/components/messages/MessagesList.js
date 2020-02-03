@@ -32,11 +32,15 @@ export default (props) => {
 
   return (
     
-    <div className="messages">
+    <div className="messagesContainer">
+            <h2>Messages</h2>
+
+      <div className="messages">
       {messages.map(m => (
         <Message {...props} 
         key={m.id} message={m} />
       ))}
+      </div>
       <form className="messagesForm">
       <textarea
         type="textarea"

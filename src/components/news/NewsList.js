@@ -33,10 +33,13 @@ export default (props) => {
     })
 
   return (
-    <section>
-       <button onClick={() => {
+    <section className="newsContainer">
+            <h2>News</h2>
+
+       <button className="btn btn-primary" onClick={() => {
                 props.history.push(`/createNews`)
             }}>Add News</button>
+        <div className="newsSection">
       {
         sortedCombinedArray.map(singleNews => {
           if (singleNews.userId != parseInt(localStorage.getItem("nutshell_user"))) {
@@ -49,7 +52,7 @@ export default (props) => {
                       friendStatus={isFriend} />
             )
         })
-      }
+      }</div>
     </section>
   )
 }
