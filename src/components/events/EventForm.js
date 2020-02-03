@@ -242,10 +242,10 @@ export default props => {
     return (
         <form className="eventForm">
             <h2 className="eventForm__title">{editMode ? "Edit event" : "Add event"}</h2>
-            <fieldset>
+            <fieldset className="eventName">
                 <div className="form-group">
                     <label htmlFor="name">Event name: </label>
-                    <input type="text" name="name" required autoFocus className="form-control"
+                    <input type="text" name="name" required autoFocus className="form-control eventFormInput"
                         ref={eventName}
                         proptype="varchar"
                         placeholder="Event name"
@@ -254,10 +254,10 @@ export default props => {
                     />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="eventLocation">
                 <div className="form-group">
                     <label htmlFor="location">Event location: </label>
-                    <input type="text" name="location" required autoFocus className="form-control"
+                    <input type="text" name="location" required autoFocus className="form-control eventFormInput"
                         ref={eventLocation}
                         proptype="varchar"
                         placeholder="Event location"
@@ -269,7 +269,7 @@ export default props => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">{eventDateLabel} </label>
-                    <input type="datetime-local" name="date" required className="form-control"
+                    <input type="datetime-local" name="date" required className="form-control eventFormInput"
                         ref={eventDate}
                         proptype="varchar"
                         defaultValue={event.date}
@@ -277,7 +277,6 @@ export default props => {
                     />
                 </div>
             </fieldset>
-            {<section className="eventFormButtonSection">
                 {/* {closingTimeButtonClicked ? (
                     ""
                 ) : (
@@ -305,16 +304,17 @@ export default props => {
                     </>
                 ) : ("")
             } */}
+            <section className="eventFormButtons">
                 <button id="eventFormSubmitButton" type="submit"
                     onClick={evt => {
                         evt.preventDefault()
                         constructNewEvent()
                     }}
                     className="btn btn-primary">
-                    {editMode ? "Save Edit" : "Save New Event"}
+                    {editMode ? "Save Edit" : "Save Event"}
                 </button>
-                <button onClick={() => props.history.push("/")}>Close</button>
-            </section>}
+                <button className="btn btn-light" id="closeEvent" onClick={() => props.history.push("/")}>Close</button>
+            </section>
         </form>
     )
 }

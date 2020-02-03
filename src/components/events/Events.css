@@ -10,15 +10,9 @@
     margin-top: 10pt;
 }
 
-.eventFormButtonSection {
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-#eventFormSubmitButton {
-    max-width: 10%;
-}
+#closeEvent {
+  margin-top: 10px;
+  }
 
 .eventsList {
   padding: 5px;
@@ -34,4 +28,30 @@
 
 .eventCard {
   margin-top: 10pt;
+}
+
+.eventForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10%;  
+}
+
+.eventName{
+  margin: 5px;
+}
+.eventLocation{
+  margin: 5px;
+}
+
+.eventFormInput{
+  align-items: center;
+  max-width: 500px;
+}
+
+.eventFormButtons {
+  display: flex;
+  flex-direction: row;
+  padding-left: 25px;
 }
