@@ -218,7 +218,7 @@ export default props => {
                     <input type="datetime-local" name="date" required className="form-control eventFormInput"
                         ref={eventDate}
                         proptype="varchar"
-                        defaultValue={event.date}
+                        defaultValue={event.beginningDate}
                         onChange={handleControlledInputChange}
                     />
                 </div>
