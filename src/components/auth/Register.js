@@ -7,6 +7,10 @@ const Register = props => {
     const password = useRef()
     const verifyPassword = useRef()
 
+    if(localStorage.getItem("nutshell_user") === null) {
+        document.body.classList.add("logInBackground")
+    }
+
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(_ => _.json())
@@ -39,6 +43,7 @@ const Register = props => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("nutshell_user", createdUser.id)
+                                document.body.classList.remove("logInBackground")
                                 props.history.push("/")
                             }
                         })

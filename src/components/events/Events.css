@@ -1,14 +1,4 @@
-.friendEvent {
-    font-style: italic;
-    background-color: rgba(218, 165, 32, 0.514);
-    margin-top: 10pt;
-}
 
-.latestEvent {
-    font-weight: bold;
-    background-color: rgb(230, 255, 247);
-    margin-top: 10pt;
-}
 
 #closeEvent {
   margin-top: 10px;
@@ -54,4 +44,16 @@
   display: flex;
   flex-direction: row;
   padding-left: 25px;
+  padding: 5pt;
+}
+
+.friendEvent {
+  font-style: italic;
+  background-color: rgba(218, 165, 32, 0.329);
+  margin-top: 10pt;
+}
+.latestEvent {
+  font-weight: bold;
+  background-color:#b2bd7e77;
+  margin-top: 10pt;
 }
