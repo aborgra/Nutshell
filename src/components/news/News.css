@@ -1,4 +1,9 @@
-
+.newsForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
 
 .friendsClass{
   background-color: rgba(218, 165, 32, 0.178);
@@ -15,4 +20,8 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.newsButtonContainer{
+  display: flex;
 }

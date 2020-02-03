@@ -79,7 +79,7 @@ export default props => {
       <h2 className="newsForm__title">{editMode ? "Slowly Edit" : "Add some sloth news"}</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">news Title: </label>
+          <label htmlFor="name">Title </label>
           <input type="text" name="title" required autoFocus className="form-control"
    
             proptype="varchar"
@@ -91,7 +91,7 @@ export default props => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">news Url: </label>
+          <label htmlFor="name">URL </label>
           <input type="text" name="url" required autoFocus className="form-control"
 
             proptype="varchar"
@@ -103,8 +103,8 @@ export default props => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="treatment">Synopsis: </label>
-          <textarea type="text" name="synopsis" className="form-control"
+          <label htmlFor="treatment">Synopsis </label>
+          <textarea cols="23" type="text" name="synopsis" className="form-control"
            
             proptype="varchar"
             placeholder="What's slothing?"
@@ -113,15 +113,17 @@ export default props => {
           </textarea>
         </div>
       </fieldset>
+      <div className="newsButtonContainer">
       <button type="submit"
         onClick={evt => {
           evt.preventDefault()
           constructNewNews()
         }}
         className="btn btn-primary">
-        {editMode ? "Save those changes" : "Add that News!"}
+        {editMode ? "Save changes" : "Add News"}
       </button>
-      <button className="btn btn-light" onClick={() => props.history.push("/")}>Close</button>
+      <button className=" closeBtn btn btn-light" onClick={() => props.history.push("/")}>Close</button>
+      </div>
     </form>
   )
 }
