@@ -9,6 +9,8 @@
   background-color: rgba(218, 165, 32, 0.178);
   font-style: italic;
   padding: 5pt;
+  margin-top: 10px;
+  border-radius: 2pt;
 }
 
 .newsSection {
@@ -33,4 +35,9 @@
 
 .synopsis{
   word-break: normal;
+}
+
+.newsInfo{
+  padding: 20px;
+  border-radius: 2pt;
 }
