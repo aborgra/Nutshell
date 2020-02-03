@@ -313,6 +313,7 @@ export default props => {
                     className="btn btn-primary">
                     {editMode ? "Save Edit" : "Save New Event"}
                 </button>
+                <button onClick={() => props.history.push("/")}>Close</button>
             </section>}
         </form>
     )
