@@ -7,19 +7,13 @@ export default ({ tasks, history }) => {
   const taskCompleted = useRef(null);
 
   return (
-    <section className="customer">
-      <h3 className="customer__name">{tasks.user.userName}</h3>
+    <section className="task">
+      <h5 className="user__name">{tasks.user.userName}</h5>
       <div className="taskCardInfo">
-        To Do:
-        <ul>
-          <li>{tasks.name}</li>
-        </ul>
+        To Do:  {tasks.name}
       </div>
       <div className="taskCardInfo">
-        Date:
-        <ul>
-          <li>{tasks.completionDate}</li>
-        </ul>
+        Date:  {tasks.completionDate}
       </div>
       <div>
         Task Completed:{" "}
@@ -38,11 +32,11 @@ export default ({ tasks, history }) => {
           ref={taskCompleted}
         />
       </div>
-      <button onClick={() => history.push(`/tasks/edit/${tasks.id}`)} className="editTask btn btn-secondary">
-        Edit Task
+      <button onClick={() => history.push(`/tasks/edit/${tasks.id}`)} className="editTask btn btn-light">
+        Edit
       </button>
-      <button onClick={() => deleteTasks(tasks).then(() => history.push("/"))} className="editTask btn btn-secondary">
-        Delete Task
+      <button onClick={() => deleteTasks(tasks).then(() => history.push("/"))} className="editTask btn btn-light">
+        Delete
       </button>
     </section>
   );

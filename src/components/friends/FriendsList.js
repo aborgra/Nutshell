@@ -57,13 +57,15 @@ export default () => {
 
   return (
     <div className="friends">
+            <h2>Friends</h2>
+
       <input
         type="text"
         name="name"
         id="friendName"
         ref={friendName}
         required
-        className="form-control"
+        className="form-control friend__search"
         proptype="varchar"
         placeholder="Friend name"
         defaultValue={""}

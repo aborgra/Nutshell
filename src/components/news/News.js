@@ -9,12 +9,12 @@ export default ({ news, props, friendStatus }) => {
   let editNewsButton = ""
   if (friendStatus === false) {
     deleteNewsButton = <>
-      <button onClick={
+      <button className="btn btn-light" onClick={
         () => {
           deleteNews(news);
         }
-      }>Delete News</button>
-       <button onClick={() => {
+      }>Delete</button>
+       <button className="btn btn-light" onClick={() => {
         props.history.push(`/editNews/${news.id}`)
       }}>Edit</button>
       

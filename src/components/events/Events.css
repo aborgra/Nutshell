@@ -1,6 +1,7 @@
-.tasks {
-  padding: 10px;
+.eventsList {
+  padding: 5px;
   margin-top: 25px;
+  margin-bottom: 30px;
   max-height: 300px;
   overflow-y: auto;
 }
@@ -9,10 +10,6 @@
   display: none;
 }
 
-.task {
-  margin-bottom: 10pt;
-}
-
-.btn {
-  margin-right: 10pt
+.eventCard {
+  margin-top: 10pt
 }
