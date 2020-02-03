@@ -45,12 +45,14 @@ export default ({ event, props, friend, next }) => {
   }
 
   return (
-    <section className="eventCard">
-      <div className="eventCardInfo">Name: {event.name}</div>
-      <div className="eventCardInfo">Date: {event.formattedDate}</div>
-      <div className="eventCardInfo">Location: {event.location}</div>
-      {eventEditButton}
-      {eventDeleteButton}
+    <section className={eventSectionClass}>
+      <div className="eventCard">
+        <div className="eventCardInfo">Name: {event.name}</div>
+        <div className="eventCardInfo">Date: {event.formattedDate}</div>
+        <div className="eventCardInfo">Location: {event.location}</div>
+        {eventEditButton}
+        {eventDeleteButton}
+      </div>
     </section>
   );
 };
