@@ -10,9 +10,20 @@
 }
 
 .task {
-  margin-bottom: 10pt;
+  margin-bottom: 50pt;
 }
 
 .btn {
-  margin-right: 10pt
+  margin-right: 10pt;
+}
+.btn-edit-delete {
+  position: relative;
+  right: 10px;
+}
+.taskCardInfo {
+  margin: 20px;
+  margin-left: -10px;
+}
+.taskInfo {
+  font-weight: bold;
 }

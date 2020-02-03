@@ -49,7 +49,7 @@ export default ({ tasks, history }) => {
   }
 
   return (
-    <section className="taskCard">
+    <section className="task">
       <div className="taskCardInfo">
         <span className="taskInfo">To Do:</span>
         <em> {tasks.name}</em>
@@ -78,7 +78,7 @@ export default ({ tasks, history }) => {
         />
       </div>
 
-      <button onClick={() => history.push(`/tasks/edit/${tasks.id}`)} className="editTask btn btn-primary btn-sm">
+      <button onClick={() => history.push(`/tasks/edit/${tasks.id}`)} className="editTask btn-edit-delete btn btn-primary btn-sm">
         Edit Task
       </button>
 
@@ -88,7 +88,7 @@ export default ({ tasks, history }) => {
             deleteTasks(tasks).then(() => history.push("/"));
           }
         }}
-        className="editTask btn btn-danger btn-sm">
+        className="editTask btn-edit-delete btn btn-danger btn-sm">
         Delete Task
       </button>
     </section>
