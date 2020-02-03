@@ -4,3 +4,15 @@
   background-color: rgba(218, 165, 32, 0.178);
   font-style: italic;
 }
+
+.newsSection {
+  padding: 5px;
+  margin-top: 25px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 30px
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

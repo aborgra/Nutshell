@@ -15,7 +15,7 @@ export default ({ message, history }) => {
   if (message.userId === userId) {
     editMessageButton = 
       <>
-        <button
+        <button className="btn btn-light"
           onClick={() => {
             history.push(`/editMessage/${message.id}`);
           }}

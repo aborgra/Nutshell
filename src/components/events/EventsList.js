@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { EventContext } from "./EventsProvider"
 import { FriendContext } from "../friends/FriendProvider"
 import Event from "./Event"
-// import "./Events.css"
+import "./Events.css"
 
 export default (props) => {
     const { events } = useContext(EventContext)
@@ -30,8 +30,8 @@ export default (props) => {
 
     return (
         <div className="events">
-            <h1 className="events__header">Events</h1>
-            <button className="addEvent" onClick={() => props.history.push("/createEvent")}>
+            <h2 className="events__header">Events</h2>
+            <button className="btn btn-primary" onClick={() => props.history.push("/createEvent")}>
                 Add Event
             </button>
             <article className="eventsList">
