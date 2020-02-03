@@ -2,6 +2,11 @@
   display: flex;
 }
 
+
+.message__text{
+
+}
+
 .friendMessage__img{
   border-radius: 100%;
   max-width: 25px;
@@ -26,7 +31,7 @@
 .messages {
   padding: 5px;
   margin-top: 25px;
-  max-height: 600px;
+  max-height: 450px;
   overflow-y: auto;
 }
 
@@ -35,5 +40,6 @@
 }
 
 .messagesContainer {
-  max-height: 900px
+  max-height: 900px;
+  margin: 0;
 }
