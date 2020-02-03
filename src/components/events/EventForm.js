@@ -4,9 +4,10 @@ import { EventContext } from "./EventsProvider"
 export default props => {
     const { addEvent, events, editEvent } = useContext(EventContext)
     const [event, setEvent] = useState({})
+    const [buttonClicked, setButtonClicked] = useState(false)
     const eventName = useRef("")
     const eventDate = useRef("")
-    // const eventClosingDate = useRef("")
+    const eventClosingDate = useRef("")
     const eventLocation = useRef("")
 
     const editMode = props.match.params.hasOwnProperty("eventId")
@@ -33,214 +34,159 @@ export default props => {
         setDefaults()
     }, [events])
 
+    const formatDateTime = (dateValue) => {
+        let formattedDate = new Date(dateValue).toString()
+        console.log(`formattedDate is ${formattedDate}`)
+        formattedDate = formattedDate.split(" ")
+        switch (formattedDate[0]) {
+            case "Sun":
+                formattedDate[0] = "Sunday,";
+                break;
+            case "Mon":
+                formattedDate[0] = "Monday,";
+                break;
+            case "Tue":
+                formattedDate[0] = "Tuesday,";
+                break;
+            case "Wed":
+                formattedDate[0] = "Wednesday,";
+                break;
+            case "Thu":
+                formattedDate[0] = "Thursday,";
+                break;
+            case "Fri":
+                formattedDate[0] = "Friday,";
+                break;
+            case "Sat":
+                formattedDate[0] = "Saturday,";
+                break;
+        }
+        switch (formattedDate[1]) {
+            case "Jan":
+                formattedDate[1] = "January";
+                break;
+            case "Feb":
+                formattedDate[1] = "February";
+                break;
+            case "Mar":
+                formattedDate[1] = "March";
+                break;
+            case "Apr":
+                formattedDate[1] = "April";
+                break;
+            case "May":
+                formattedDate[1] = "May";
+                break;
+            case "Jun":
+                formattedDate[1] = "June";
+                break;
+            case "Jul":
+                formattedDate[1] = "July";
+                break;
+            case "Aug":
+                formattedDate[1] = "August";
+                break;
+            case "Sep":
+                formattedDate[1] = "September";
+                break;
+            case "Oct":
+                formattedDate[1] = "October";
+                break;
+            case "Nov":
+                formattedDate[1] = "November";
+                break;
+            case "Dec":
+                formattedDate[1] = "December"
+                break;
+        }
+        let formattedTime = formattedDate[4].split(":")
+        let formattedHour = parseInt(formattedTime[0], 10)
+        if (formattedHour > 11) {
+            formattedHour -= 12
+            if (formattedHour === 0) {
+                formattedHour = 12
+            }
+            formattedTime[0] = formattedHour.toString()
+            formattedDate[5] = "PM"
+        } else {
+            formattedDate[5] = "AM"
+        }
+        formattedDate[4] = formattedTime.slice(0, 2).join(":")
+        formattedDate[4] = " at " + formattedDate[4]
+        formattedDate = formattedDate.slice(0, 6).join(" ")
+        return formattedDate
+    }
+
     const constructNewEvent = () => {
             if (editMode) {
-                let formattedDate = new Date(eventDate.current.value).toString()
-                console.log(`formattedDate is ${formattedDate}`)
-                formattedDate = formattedDate.split(" ")
-                switch (formattedDate[0]) {
-                    case "Sun":
-                        formattedDate[0] = "Sunday,";
-                        break;
-                    case "Mon":
-                        formattedDate[0] = "Monday,";
-                        break;
-                    case "Tue":
-                        formattedDate[0] = "Tuesday,";
-                        break;
-                    case "Wed":
-                        formattedDate[0] = "Wednesday,";
-                        break;
-                    case "Thu":
-                        formattedDate[0] = "Thursday,";
-                        break;
-                    case "Fri":
-                        formattedDate[0] = "Friday,";
-                        break;
-                    case "Sat":
-                        formattedDate[0] = "Saturday,";
-                        break;
-                }
-                switch (formattedDate[1]) {
-                    case "Jan":
-                        formattedDate[1] = "January";
-                        break;
-                    case "Feb":
-                        formattedDate[1] = "February";
-                        break;
-                    case "Mar":
-                        formattedDate[1] = "March";
-                        break;
-                    case "Apr":
-                        formattedDate[1] = "April";
-                        break;
-                    case "May":
-                        formattedDate[1] = "May";
-                        break;
-                    case "Jun":
-                        formattedDate[1] = "June";
-                        break;
-                    case "Jul":
-                        formattedDate[1] = "July";
-                        break;
-                    case "Aug":
-                        formattedDate[1] = "August";
-                        break;
-                    case "Sep":
-                        formattedDate[1] = "September";
-                        break;
-                    case "Oct":
-                        formattedDate[1] = "October";
-                        break;
-                    case "Nov":
-                        formattedDate[1] = "November";
-                        break;
-                    case "Dec":
-                        formattedDate[1] = "December"
-                        break;
-                }
-                let formattedTime = formattedDate[4].split(":")
-                let formattedHour = parseInt(formattedTime[0], 10)
-                if (formattedHour > 11) {
-                    formattedHour -= 12
-                    if (formattedHour === 0) {
-                        formattedHour = 12
-                    }
-                    formattedTime[0] = formattedHour.toString()
-                    formattedDate[5] = "PM"
+                let beginningDate = formatDateTime(eventDate.current.value)
+                if (buttonClicked) {
+                    let endingDate = formatDateTime(eventClosingDate.current.value)
+                    editEvent({
+                        id: event.id,
+                        userId: parseInt(localStorage.getItem("nutshell_user"), 10),
+                        name: eventName.current.value,
+                        beginningDate: eventDate.current.value,
+                        closingDate: eventClosingDate.current.value,
+                        formattedBeginningDate: beginningDate,
+                        formatttedEndingDate: endingDate,
+                        location: eventLocation.current.value
+                    })
+                        .then(() => props.history.push("/"))
                 } else {
-                    formattedDate[5] = "AM"
+                    editEvent({
+                        id: event.id,
+                        userId: parseInt(localStorage.getItem("nutshell_user"), 10),
+                        name: eventName.current.value,
+                        beginningDate: eventDate.current.value,
+                        formattedBeginningDate: beginningDate,
+                        location: eventLocation.current.value
+                    })
+                        .then(() => props.history.push("/"))
                 }
-                formattedDate[4] = formattedTime.slice(0, 2).join(":")
-                formattedDate[4] = " at " + formattedDate[4]
-                formattedDate = formattedDate.slice(0, 6).join(" ")
-                editEvent({
-                    id: event.id,
-                    userId: parseInt(localStorage.getItem("nutshell_user"), 10),
-                    name: eventName.current.value,
-                    date: eventDate.current.value,
-                    // closingDate: eventClosingDate.current.value,
-                    formattedDate: formattedDate,
-                    location: eventLocation.current.value
-                })
-                    .then(() => props.history.push("/"))
             } else {
-                let formattedDate = new Date(eventDate.current.value).toString()
-                console.log(`formattedDate is ${formattedDate}`)
-                formattedDate = formattedDate.split(" ")
-                switch (formattedDate[0]) {
-                    case "Sun":
-                        formattedDate[0] = "Sunday,";
-                        break;
-                    case "Mon":
-                        formattedDate[0] = "Monday,";
-                        break;
-                    case "Tue":
-                        formattedDate[0] = "Tuesday,";
-                        break;
-                    case "Wed":
-                        formattedDate[0] = "Wednesday,";
-                        break;
-                    case "Thu":
-                        formattedDate[0] = "Thursday,";
-                        break;
-                    case "Fri":
-                        formattedDate[0] = "Friday,";
-                        break;
-                    case "Sat":
-                        formattedDate[0] = "Saturday,";
-                        break;
-                }
-                switch (formattedDate[1]) {
-                    case "Jan":
-                        formattedDate[1] = "January";
-                        break;
-                    case "Feb":
-                        formattedDate[1] = "February";
-                        break;
-                    case "Mar":
-                        formattedDate[1] = "March";
-                        break;
-                    case "Apr":
-                        formattedDate[1] = "April";
-                        break;
-                    case "May":
-                        formattedDate[1] = "May";
-                        break;
-                    case "Jun":
-                        formattedDate[1] = "June";
-                        break;
-                    case "Jul":
-                        formattedDate[1] = "July";
-                        break;
-                    case "Aug":
-                        formattedDate[1] = "August";
-                        break;
-                    case "Sep":
-                        formattedDate[1] = "September";
-                        break;
-                    case "Oct":
-                        formattedDate[1] = "October";
-                        break;
-                    case "Nov":
-                        formattedDate[1] = "November";
-                        break;
-                    case "Dec":
-                        formattedDate[1] = "December"
-                        break;
-                }
-                formattedDate[2] = parseInt(formattedDate[2], 10).toString()
-                formattedDate[2] += ","
-                let formattedTime = formattedDate[4].split(":")
-                let formattedHour = parseInt(formattedTime[0], 10)
-                if (formattedHour > 11) {
-                    formattedHour -= 12
-                    if (formattedHour === 0) {
-                        formattedHour = 12
-                    }
-                    formattedTime[0] = formattedHour.toString()
-                    formattedDate[5] = "PM"
+                let beginningDate = formatDateTime(eventDate.current.value)
+                if (buttonClicked) {
+                    let endingDate = formatDateTime(eventClosingDate.current.value)
+                    addEvent({
+                        id: event.id,
+                        userId: parseInt(localStorage.getItem("nutshell_user"), 10),
+                        name: eventName.current.value,
+                        beginningDate: eventDate.current.value,
+                        closingDate: eventClosingDate.current.value,
+                        formattedBeginningDate: beginningDate,
+                        formatttedEndingDate: endingDate,
+                        location: eventLocation.current.value
+                    })
+                        .then(() => props.history.push("/"))
                 } else {
-                    formattedDate[5] = "AM"
+                    addEvent({
+                        id: event.id,
+                        userId: parseInt(localStorage.getItem("nutshell_user"), 10),
+                        name: eventName.current.value,
+                        beginningDate: eventDate.current.value,
+                        formattedBeginningDate: beginningDate,
+                        location: eventLocation.current.value
+                    })
+                        .then(() => props.history.push("/"))
                 }
-                formattedDate[4] = formattedTime.slice(0, 2).join(":")
-                formattedDate[4] = " at " + formattedDate[4]
-                console.log("formattedDate line 204")
-                console.log(formattedDate)
-                formattedDate = formattedDate.slice(0, 6).join(" ")
-                addEvent({
-                    id: event.id,
-                    userId: parseInt(localStorage.getItem("nutshell_user"), 10),
-                    name: eventName.current.value,
-                    formattedDate: formattedDate,
-                    date: eventDate.current.value,
-                    // closingDate: eventClosingDate.current.value,
-                    location: eventLocation.current.value
-                })
-                    .then(() => props.history.push("/"))
             }
     }    
 
     let eventDateLabel = "Event date: "
 
-    // let closingTimeButtonClicked = false
+    let closingTimeButtonClicked = false
 
-    // console.log(closingTimeButtonClicked)
+    console.log(closingTimeButtonClicked)
 
-    // let closingTimeButton = <>
-    //     <button id="closingTimeButton" onClick={() => {
-    //         closingTimeButtonClicked = true
-    //         }
-    //     }>+ End Time</button>
-    // </>
-
-    // console.log(closingTimeButtonClicked)
+    console.log(closingTimeButtonClicked)
     
-    // console.log(closingTimeButtonClicked, "line 258")
-
+    console.log(closingTimeButtonClicked, "line 258")
 
     return (
-        <form className="eventForm">
+        <form className="eventForm" onSubmit={event => {
+            event.preventDefault()
+        }}>
             <h2 className="eventForm__title">{editMode ? "Edit event" : "Add event"}</h2>
             <fieldset className="eventName">
                 <div className="form-group">
@@ -277,17 +223,7 @@ export default props => {
                     />
                 </div>
             </fieldset>
-                {/* {closingTimeButtonClicked ? (
-                    ""
-                ) : (
-                    <>
-        <button id="closingTimeButton" onClick={() => {
-            closingTimeButtonClicked = true
-            }
-        }>+ End Time</button>
-    </>
-                )}
-                {closingTimeButtonClicked ? (
+                {buttonClicked ? (
                     <>
                     <fieldset>
                         <div className="form-group">
@@ -300,10 +236,20 @@ export default props => {
                             />
                         </div>
                     </fieldset>
-                    <button id="closingTimeRemoveButton" onClick={closingTimeButtonClicked = false}>Remove</button>
+                    <button id="closingTimeRemoveButton" onClick={() => {
+                        let falseVariable = false
+                        setButtonClicked(falseVariable)
+                    }}>Remove</button>
                     </>
-                ) : ("")
-            } */}
+                ) : (
+                    <>
+        <button id="closingTimeButton" onClick={event => {
+            let closingTimeButtonClicked = true
+            setButtonClicked(closingTimeButtonClicked)
+            }
+        }>+ End Time</button>
+    </>
+                )}
             <section className="eventFormButtons">
                 <button id="eventFormSubmitButton" type="submit"
                     onClick={evt => {

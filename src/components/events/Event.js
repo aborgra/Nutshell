@@ -44,11 +44,24 @@ export default ({ event, props, friend, next }) => {
     eventSectionClass = "latestEvent";
   }
 
+  let eventDate = ""
+
+  if (event.closingDate) {
+    eventDate = <>
+      <div className="eventCardInfo">Start: {event.formattedBeginningDate}</div>
+      <div className="eventCardInfo">End: {event.formatttedEndingDate}</div>
+      </>
+  } else {
+    eventDate = <>
+      <div className="eventCardInfo">Date: {event.formattedBeginningDate}</div>
+      </>
+  }
+
   return (
     <section className={eventSectionClass}>
       <div className="eventCard">
         <div className="eventCardInfo">Name: {event.name}</div>
-        <div className="eventCardInfo">Date: {event.formattedDate}</div>
+        {eventDate}
         <div className="eventCardInfo">Location: {event.location}</div>
         {eventEditButton}
         {eventDeleteButton}
