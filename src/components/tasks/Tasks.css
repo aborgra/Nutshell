@@ -10,7 +10,7 @@
 }
 
 .task {
-  margin-bottom: 50pt;
+  margin-bottom: 30pt;
 }
 
 .btn {
@@ -21,7 +21,7 @@
   right: 10px;
 }
 .taskCardInfo {
-  margin: 20px;
+  margin: 10px;
   margin-left: -10px;
 }
 .taskInfo {

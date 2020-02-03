@@ -11,5 +11,17 @@
 }
 
 .eventCard {
-  margin-top: 10pt
+  margin-top: 10pt;
+  padding: 5pt
+}
+
+.friendEvent {
+  font-style: italic;
+  background-color: rgba(218, 165, 32, 0.329);
+  margin-top: 10pt;
+}
+.latestEvent {
+  font-weight: bold;
+  background-color:#b2bd7e77;
+  margin-top: 10pt;
 }

@@ -78,7 +78,7 @@ export default ({ tasks, history }) => {
         />
       </div>
 
-      <button onClick={() => history.push(`/tasks/edit/${tasks.id}`)} className="editTask btn-edit-delete btn btn-primary btn-sm">
+      <button onClick={() => history.push(`/tasks/edit/${tasks.id}`)} className="editTask btn-edit-delete btn btn-light">
         Edit Task
       </button>
 
@@ -88,7 +88,7 @@ export default ({ tasks, history }) => {
             deleteTasks(tasks).then(() => history.push("/"));
           }
         }}
-        className="editTask btn-edit-delete btn btn-danger btn-sm">
+        className="editTask btn-edit-delete btn btn-light">
         Delete Task
       </button>
     </section>

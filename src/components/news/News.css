@@ -8,6 +8,7 @@
 .friendsClass{
   background-color: rgba(218, 165, 32, 0.178);
   font-style: italic;
+  padding: 5pt;
 }
 
 .newsSection {
@@ -25,3 +26,8 @@
 .newsButtonContainer{
   display: flex;
 }
+.newsCard {
+  margin-bottom: 10pt;
+  padding: 5pt
+}
+
