@@ -6,7 +6,7 @@ export default props => {
     const [event, setEvent] = useState({})
     const eventName = useRef("")
     const eventDate = useRef("")
-    const eventClosingDate = useRef("")
+    // const eventClosingDate = useRef("")
     const eventLocation = useRef("")
 
     const editMode = props.match.params.hasOwnProperty("eventId")
@@ -119,7 +119,7 @@ export default props => {
                     userId: parseInt(localStorage.getItem("nutshell_user"), 10),
                     name: eventName.current.value,
                     date: eventDate.current.value,
-                    closingDate: eventClosingDate.current.value,
+                    // closingDate: eventClosingDate.current.value,
                     formattedDate: formattedDate,
                     location: eventLocation.current.value
                 })
@@ -214,52 +214,29 @@ export default props => {
                     name: eventName.current.value,
                     formattedDate: formattedDate,
                     date: eventDate.current.value,
-                    closingDate: eventClosingDate.current.value,
+                    // closingDate: eventClosingDate.current.value,
                     location: eventLocation.current.value
                 })
                     .then(() => props.history.push("/"))
             }
     }    
 
-    let closingTime = ""
-    let closingTimeRemoveButton = ""
-    let closingTimeButtonClicked = false
-    let closingTimeButton = <>
-                                <button id="closingTimeButton" onClick={
-                                    closingTimeButtonClicked = true
-                                }>+ End Time</button>
-                            </>
+    let eventDateLabel = "Event date: "
 
-    function showClosingTimeDefault() {
-        closingTime = <>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="date">Event date: </label>
-                        <input type="datetime-local" name="date" required className="form-control"
-                            ref={eventClosingDate}
-                            proptype="varchar"
-                            defaultValue={event.closingDate}
-                            onChange={handleControlledInputChange}
-                        />
-                    </div>
-                </fieldset>
-            </>
-    }
+    // let closingTimeButtonClicked = false
 
-    function showClosingTimeNoDefault() {
-        closingTime = <>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="date">Event date: </label>
-                        <input type="datetime-local" name="date" required className="form-control"
-                            ref={eventClosingDate}
-                            proptype="varchar"
-                            onChange={handleControlledInputChange}
-                        />
-                    </div>
-                </fieldset>
-            </>
-    }
+    // console.log(closingTimeButtonClicked)
+
+    // let closingTimeButton = <>
+    //     <button id="closingTimeButton" onClick={() => {
+    //         closingTimeButtonClicked = true
+    //         }
+    //     }>+ End Time</button>
+    // </>
+
+    // console.log(closingTimeButtonClicked)
+    
+    // console.log(closingTimeButtonClicked, "line 258")
 
 
     return (
@@ -291,7 +268,7 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Event date: </label>
+                    <label htmlFor="date">{eventDateLabel} </label>
                     <input type="datetime-local" name="date" required className="form-control"
                         ref={eventDate}
                         proptype="varchar"
@@ -300,10 +277,34 @@ export default props => {
                     />
                 </div>
             </fieldset>
-            <section className="eventFormButtonSection">
-                {closingTimeButton}
-                {closingTime}
-                {closingTimeRemoveButton}
+            {<section className="eventFormButtonSection">
+                {/* {closingTimeButtonClicked ? (
+                    ""
+                ) : (
+                    <>
+        <button id="closingTimeButton" onClick={() => {
+            closingTimeButtonClicked = true
+            }
+        }>+ End Time</button>
+    </>
+                )}
+                {closingTimeButtonClicked ? (
+                    <>
+                    <fieldset>
+                        <div className="form-group">
+                            <label htmlFor="date">End: </label>
+                            <input type="datetime-local" name="date" required className="form-control"
+                                ref={eventClosingDate}
+                                proptype="varchar"
+                                defaultValue={event.closingDate}
+                                onChange={handleControlledInputChange}
+                            />
+                        </div>
+                    </fieldset>
+                    <button id="closingTimeRemoveButton" onClick={closingTimeButtonClicked = false}>Remove</button>
+                    </>
+                ) : ("")
+            } */}
                 <button id="eventFormSubmitButton" type="submit"
                     onClick={evt => {
                         evt.preventDefault()
@@ -312,7 +313,7 @@ export default props => {
                     className="btn btn-primary">
                     {editMode ? "Save Edit" : "Save New Event"}
                 </button>
-            </section>
+            </section>}
         </form>
     )
 }
