@@ -27,7 +27,7 @@ export default ({ news, props, friendStatus }) => {
   return (
     <section className={newsSectionClass}>
       <div>Title: {news.title} </div>
-      <div>Synopsis: {news.synopsis} </div>
+      <div className="synopsis">Synopsis: {news.synopsis} </div>
       <a href="{news.url}">{news.url}</a>
       <div>Date: {news.date}</div>
       {deleteNewsButton}
