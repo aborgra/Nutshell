@@ -1,5 +1,6 @@
 
 .navbar {
+  background-color: #b2bd7e;
   display: flex;
   flex-wrap: nowrap;
   justify-content: left;
@@ -8,4 +9,30 @@
 .navbar__item {
   flex-basis: 20%;
   list-style-type: none;
+  text-align: center;
+}
+
+
+
+
+
+.navbar-inverse{
+  background-color: #222;
+  border-color: #080808
+}
+
+.navbar-fixed-bottom {
+  top: 0;
+  border-width: 0 0 1px;
+}
+
+.navbar {
+  min-height: 50px;
+  margin-bottom:20px;
+  border: 1px solid transparent;
+}
+
+.navbar-text {
+  color: whitesmoke;
+  justify-content: left
 }

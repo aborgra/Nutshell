@@ -16,9 +16,9 @@ export default props => {
 
   return (
     <>
-      <h1>Tasks</h1>
+      <h2>Tasks</h2>
 
-      <button onClick={() => props.history.push("/tasks/create")}>Create Task</button>
+      <button className="btn btn-primary" onClick={() => props.history.push("/tasks/create")}>Create Task</button>
       <div className="tasks">
         {sortedTasks.map(singleTask => {
           return <Task {...props} key={singleTask.id} tasks={singleTask} />;

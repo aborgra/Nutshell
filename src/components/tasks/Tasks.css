@@ -1,0 +1,18 @@
+.tasks {
+  padding: 10px;
+  margin-top: 25px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.task {
+  margin-bottom: 10pt;
+}
+
+.btn {
+  margin-right: 10pt
+}

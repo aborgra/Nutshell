@@ -7,6 +7,8 @@ import { NewsProvider } from "../news/NewsProvider";
 import { TasksProvider } from "../tasks/TaskProvider";
 
 export default props => {
+
+  
   return (
     <>
       <MessageProvider>

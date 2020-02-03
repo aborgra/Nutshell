@@ -1,11 +1,13 @@
 .friendEvent {
     font-style: italic;
-    background-color: rgba(218, 165, 32, 0.514)
+    background-color: rgba(218, 165, 32, 0.514);
+    margin-top: 10pt;
 }
 
 .latestEvent {
     font-weight: bold;
     background-color: rgb(230, 255, 247);
+    margin-top: 10pt;
 }
 
 .eventFormButtonSection {
@@ -14,12 +16,22 @@
     justify-content: flex-start;
 }
 
-#closingTimeButton {
-    padding: 0;
-    max-width: 10%;
-    margin: 10px 0px;
-}
-
 #eventFormSubmitButton {
     max-width: 10%;
+}
+
+.eventsList {
+  padding: 5px;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.eventCard {
+  margin-top: 10pt;
 }

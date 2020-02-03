@@ -28,8 +28,8 @@ export default (props) => {
 
     return (
         <div className="events">
-            <h1 className="events__header">Events</h1>
-            <button className="addEvent" onClick={() => props.history.push("/createEvent")}>
+            <h2 className="events__header">Events</h2>
+            <button className="btn btn-primary" onClick={() => props.history.push("/createEvent")}>
                 Add Event
             </button>
             <article className="eventsList">

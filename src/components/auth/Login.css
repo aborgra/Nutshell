@@ -1,0 +1,66 @@
+.logInForm{
+  justify-content: center;
+  text-align: center;
+  margin: 10%;
+  
+}
+
+.registerHeader{
+  margin-top: 25px;
+}
+
+.logInFormContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.logInUserContainer{
+  margin: 5px;
+}
+.logInPassContainer{
+  margin: 5px;
+}
+
+.logInUser{
+  align-items: center;
+  max-width: 500px;
+}
+
+.logInButtons{
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: 5px;
+}
+
+.registerButton{
+ margin: 10px;
+}
+
+.registerPassContainer{
+  margin-top: 20px;
+
+}
+
+.registerEmailContainer{
+ margin-top: 20px;
+}
+
+.confirmPassContainer{
+  margin-top: 20px;
+}
+
+
+.logInButton{
+  margin: 5px;
+}
+
+
+
+.registerContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

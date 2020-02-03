@@ -3,18 +3,20 @@
 }
 
 .friendsListContainer{
-  border: 1px solid black;
-  flex-basis: 25%;
+  border-right: 1px solid black;
+  padding: 20pt;
+  flex-basis: 20%;
   margin: 10px;
 }
 
 .newsEventsMessagesContainer{
-  border: 1px solid black;
   flex-basis: 50%;
   margin: 10px;
 }
 
 .tasksContainer{
-  border: 1px solid black;
+  border-left: 1px solid black;
+  padding: 20pt;
   flex-basis: 25%;
 }
+
