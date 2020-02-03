@@ -12,16 +12,46 @@
 
 .eventCard {
   margin-top: 10pt;
-  padding: 5pt
+  padding: 20px;
+  border-radius: 2pt;
+}
+
+.eventForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10%;  
+}
+
+.eventName{
+  margin: 5px;
+}
+.eventLocation{
+  margin: 5px;
+}
+
+.eventFormInput{
+  align-items: center;
+  max-width: 500px;
+}
+
+.eventFormButtons {
+  display: flex;
+  flex-direction: row;
+  padding-left: 25px;
+  padding: 5pt;
 }
 
 .friendEvent {
   font-style: italic;
   background-color: rgba(218, 165, 32, 0.329);
   margin-top: 10pt;
+  border-radius: 2pt;
 }
 .latestEvent {
   font-weight: bold;
   background-color:#b2bd7e77;
   margin-top: 10pt;
+  border-radius: 2pt;
 }
