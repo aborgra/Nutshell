@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom"
 import { FriendContext } from "../friends/FriendProvider"
-import slothPic from "../pics/slothPic.jpg"
+import slothPic from "../pics/slothHeadshot.jpg"
 import "./Friends.css"
 export default ({ friend }) => {
   const { deleteFriend } = useContext(FriendContext)
@@ -12,7 +12,6 @@ export default ({ friend }) => {
       <button className="btn btn-light"
         onClick={() => {
           deleteFriend(friend)
-          // .then(() => {props.history.push("/")});
         }}
       >
         Remove Friend
