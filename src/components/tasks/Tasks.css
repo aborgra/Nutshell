@@ -27,3 +27,14 @@
 .taskInfo {
   font-weight: bold;
 }
+
+
+.taskForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+.taskButtonContainer{
+  display: flex;
+}

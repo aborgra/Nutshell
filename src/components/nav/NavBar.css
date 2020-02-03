@@ -4,32 +4,20 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: left;
+  position: sticky !important;
+  position: -webkit-sticky;
+  top: 0 !important;
+  z-index: 1;
 }
 
+
+.navbar__message{
+  color: whitesmoke;
+}
 .navbar__item {
   flex-basis: 20%;
   list-style-type: none;
   text-align: center;
-}
-
-
-
-
-
-.navbar-inverse{
-  background-color: #222;
-  border-color: #080808
-}
-
-.navbar-fixed-bottom {
-  top: 0;
-  border-width: 0 0 1px;
-}
-
-.navbar {
-  min-height: 50px;
-  margin-bottom:20px;
-  border: 1px solid transparent;
 }
 
 .navbar-text {

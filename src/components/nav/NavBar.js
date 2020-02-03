@@ -12,7 +12,7 @@ const { users } = useContext(UserContext)
 
   return (
     <ul className="navbar">
-      <div className="navbar__message">{activeUser.userName} - Moving at the speed of sloth.</div>
+      <h3 className="navbar__message">{activeUser.userName} - Moving at the speed of sloth.</h3>
 {
     localStorage.getItem("nutshell_user")
         ? <li className="navbar__item">
